@@ -1,0 +1,59 @@
+% beamer 
+% \documentclass[11pt, aspectratio=169]{beamer}
+\documentclass[handout, 11pt, aspectratio=169]{beamer} 
+
+\usepackage{slide}
+
+% If want to use transparent layers
+\setbeamercovered{still covered={\opaqueness<1->{15}},again covered={\opaqueness<1->{60}}}
+\makeatletter
+\newcommand*\fix@beamer@close{%
+  \ifnum\beamer@trivlistdepth>0
+    \beamer@closeitem
+  \fi
+}
+\newcommand*\fix@beamer@open{%
+  \ifnum\beamer@trivlistdepth>0
+    \gdef\beamer@closeitem{}%
+  \fi
+}
+\BeforeBeginEnvironment{itemize}{\fix@beamer@close}
+\AfterEndEnvironment{itemize}{\fix@beamer@open}
+\makeatother
+
+%----------------------------------------------------------------------------------------
+%	Title
+%----------------------------------------------------------------------------------------
+\title{Mandatory vs. Voluntary Disclosure in the Dynamic Market for Lemons}
+% \subtitle{AES Conference 2024}
+\date{AES Conference 2024}
+\author{Cyrus Aghamolla (Rice) \& Shunsuke Matsuno (Columbia)}
+\institute{ }
+
+\titlegraphic{
+\vspace{5.5cm}\flushright
+\includegraphics[width=2cm]{CBS_logo.png}
+}
+
+\begin{document}
+\maketitle
+
+
+%----------------------------------------------------------------------------------------
+%	Table of Contents
+%----------------------------------------------------------------------------------------
+
+% \begin{frame}{Table of Contents}
+%   \setbeamertemplate{section in toc}[sections numbered]   
+%   \tableofcontents%[hideallsubsections]
+% \end{frame}
+
+%----------------------------------------------------------------------------------------
+%	Introduction
+%----------------------------------------------------------------------------------------
+\begin{frame}{Motivation}
+    \lipsum[1]
+\end{frame}
+
+
+\end{document}

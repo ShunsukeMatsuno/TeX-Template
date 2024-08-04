@@ -1,0 +1,114 @@
+% theme
+\usetheme[progressbar=frametitle, numbering=fraction]{metropolis} % Use metropolis theme
+
+% color, font
+\usepackage{mlmodern}  % Bold Computer Modern
+\usepackage{xcolor}
+\usecolortheme{orchid}
+\usefonttheme{professionalfonts}
+\setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
+
+\DeclareFontFamily{OMX}{mlmex}{}
+\DeclareFontShape{OMX}{mlmex}{m}{n}{%
+   <->mlmex10%
+   }{} 
+
+%% define colour
+\definecolor{lblue}{RGB}{0, 114, 206}
+\definecolor{gray}{RGB}{111, 112, 112}
+
+% misc
+\usepackage{lipsum}
+
+%% Change Metropolice Theme to Blue
+\setbeamertemplate{progress bar in head/foot}{}
+\setbeamercolor{progress bar}{fg=lblue,bg=lblue}
+\setbeamercolor{frametitle}{fg=lblue,bg=lblue!20}
+\setbeamercolor{title separator}{fg=lblue,bg=lblue}
+% \setbeamercolor{progress bar in head/foot}{fg=lblue,bg=lblue}
+\setbeamercolor{progress bar in section page}{fg=lblue,bg=lblue}
+
+% bullet point
+\setbeamertemplate{itemize item}[square]
+\setbeamertemplate{itemize subitem}[default]
+\setbeamertemplate{itemize subsubitem}[circle]
+% \setbeamercolor{local structure}{fg=cyan!50}
+\setbeamercolor{itemize item}{fg=cyan!50}
+\setbeamercolor{itemize subitem}{fg=cyan!50}
+\setbeamercolor{itemize subsubitem}{fg=cyan!50}
+
+%% Block colour
+\setbeamercolor{block title}{bg=lblue}
+
+% frame breaks
+\setbeamertemplate{frametitle continuation}{(\insertcontinuationcount)}
+
+% hyper ref
+\usepackage{hyperref} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=black,
+    }
+\newcommand{\changeurlcolor}[1]{\hypersetup{urlcolor=#1}} 
+
+% Underline
+\usepackage{ulem}
+\newcommand\ulblue{\bgroup\markoverwith
+{\textcolor{lblue}{\rule[-0.5ex]{2pt}{0.4pt}}}\ULon}
+
+% tikz
+\usepackage{tikz}
+\usepackage{standalone}
+
+% table
+\usepackage{wrapfig}
+
+% math
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\newtheorem{prop}{Proposition}
+
+% Math Macro
+\newcommand{\bb}[1]{\textbf{\textcolor{lblue}{#1}}}
+\newcommand{\red}[1]{\textbf{\textcolor{red}{#1}}}
+\newcommand{\blue}[1]{\textbf{\textcolor{lblue}{#1}}}
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\newcommand{\green}[1]{\textcolor{olive}{#1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\oo}{\mathcal{O}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+\newcommand{\argmax}{\mathop{\rm arg~max}\limits}
+
+%% Project-specific macro
+\newcommand{\pih}{\overline{\pi}}
+
+% theorem macro
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem*{cL}{Condition L}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{summary}[theorem]{Summary}
+\newtheorem{prediction}{Prediction}
+
+
+% Macro specific to this document
+\newcommand{\al}{\underline{a}}
+\newcommand{\ah}{\overline{a}}
+
+\AtBeginEnvironment{alertenv}{\setbeamercolor{item}{fg=olive}}

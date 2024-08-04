@@ -1,0 +1,186 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% Documents %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Document configuration
+%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Line spacing %%%%
+\usepackage[onehalfspacing]{setspace}   % ! `onehalfspacing` or 'doublespacing'
+\AtBeginDocument{\frenchspacing}
+
+%%%% Section numbering depth %%%%
+\setcounter{secnumdepth}{2}
+
+%%%% Margin %%%%
+\usepackage{geometry}
+\geometry{left=25mm,right=25mm,top=30mm,bottom=30mm}
+\setlength{\skip\footins}{1cm}
+
+%%%% Paragraph %%%%
+\parskip=5pt plus 1pt
+\parindent=30pt
+
+%%%% Color, font %%%%
+\usepackage{xcolor}
+
+%%%% Hyper ref %%%%
+\usepackage{hyperref} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=blue,      
+    urlcolor=blue,
+}
+
+%%%% Enumerate (adjust space) %%%%
+\usepackage{enumitem}
+\setlist{nosep}    % To remove the vertical space altogether in all lists
+
+%%%% Appendix %%%%
+\usepackage{apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\AtAppendix{\counterwithin{remark}{section}}
+\AtAppendix{\counterwithin{theorem}{section}}
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Bibliography
+%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{natbib}\setlength{\bibsep}{0.0pt}
+
+%%%%%%%%%%%%%%%%%%%%%
+%% tikz
+%%%%%%%%%%%%%%%%%%%%% 
+\usepackage{tikz}
+\usepackage{standalone}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Float
+%%%%%%%%%%%%%%%%%%%%% 
+\usepackage{caption}   % See https://tex.stackexchange.com/questions/58674/the-space-between-the-table-and-its-caption-is-very-small
+\usepackage{floatrow}
+\floatsetup{capposition=top}
+\usepackage{booktabs}
+\usepackage{tabulary}
+\usepackage{tabularx}
+\usepackage{wrapfig}
+\usepackage{threeparttable}
+\usepackage{graphicx}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Editting Features
+%%%%%%%%%%%%%%%%%%%%% 
+
+%%%% TODO %%%%
+\newcommand{\TODO}[1]{%
+\ifthenelse { \equal{#1}{}}  %if #1 is empty
+    { \textbf{\textcolor{red}{[TODO]}} }   % if #1 == blank
+    { \textbf{\textcolor{red}{[TODO: #1]}} }   % else (not blank)
+}
+\usepackage{marginnote}    % note in margin
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Quote
+%%%%%%%%%%%%%%%%%%%%%
+\usepackage{epigraph}
+\usepackage{etoolbox}
+\usepackage{calc}
+\renewcommand{\epigraphsize}{\normalsize}
+
+% % normal epigraph
+% \setlength\epigraphwidth{8cm}
+% \setlength\epigraphrule{0pt}
+% \patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
+
+% short epigraph (auto width), does not work with long epigraph
+\newcommand{\mytextformat}{\itshape\epigraphsize}
+\setlength\epigraphrule{0pt}
+\newenvironment{mytext}{\mytextformat}{}
+\newenvironment{mysource}{\scshape\hfill}{}
+\renewcommand{\textflush}{mytext} 
+\renewcommand{\sourceflush}{mysource}
+\let\originalepigraph\epigraph 
+\renewcommand{\epigraph}[2]%
+   {\setlength{\epigraphwidth}{\widthof{\mytextformat#1}}\originalepigraph{#1}{#2}}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Misc
+%%%%%%%%%%%%%%%%%%%%% 
+\usepackage{lipsum}
+\usepackage{ifthen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% Math %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Basics
+%%%%%%%%%%%%%%%%%%%%% 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs=true}    % show equation number only if it is referenced
+\usepackage{amsthm} 
+\usepackage{amsfonts}
+\usepackage{bm}   % vector
+\usepackage{bbm}   % indicator function
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Math Macro
+%%%%%%%%%%%%%%%%%%%%% 
+
+%%%% Standard Macro %%%%
+% mathbb
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+
+% mathcal
+\newcommand{\EE}{\mathcal{E}}
+\newcommand{\NN}{\mathcal{N}}
+
+% others
+\newcommand{\prob}{\mathbb{P}}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+\newcommand{\argmax}{\mathop{\rm arg~max}\limits}
+\newcommand\setItemnumber[1]{\setcounter{enumi}{\numexpr#1-1\relax}}
+
+% theorem macro
+\newtheorem{theorem}{Theorem}
+\newtheorem{assumption}{Assumption}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}{Case}
+\newtheorem{claim}{Claim}
+\newtheorem{conclusion}{Conclusion}
+\newtheorem{condition}{Condition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{corollary}{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{example}{Example}
+\newtheorem{exercise}{Exercise}
+\newtheorem{lemma}{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition}
+
+
+\theoremstyle{definition}
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
+
+%%%% Project Specific Macro %%%%
+\newcommand{\pih}{\overline{\pi}}
+\newcommand{\fb}{\mathit{FB}}
+\newcommand{\al}{\underline{\alpha}}
+\newcommand{\ah}{\overline{\alpha}}
+\newcommand{\tauFl}{\underline{\tau}_F}
+\newcommand{\tauFh}{\overline{\tau}_F}
+\newcommand{\tauLl}{\underline{\tau}_L}
+\newcommand{\tauLh}{\overline{\tau}_L}
