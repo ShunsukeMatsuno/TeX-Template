@@ -1,0 +1,35 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% Presentation Scripts %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% doc
+\usepackage[onehalfspacing]{setspace}   % ! `onehalfspacing` or 'doublespacing'
+\usepackage{parskip}
+\usepackage{geometry}
+
+% margin
+% \geometry{left=50mm,right=25mm,top=30mm,bottom=30mm}
+\geometry{top=1cm, bottom=4cm, left=3.5cm, right=2cm, heightrounded,
+marginparwidth=3cm, marginparsep=5mm}
+\setlength{\skip\footins}{1cm}
+
+% counter
+\newcounter{slide}
+\setcounter{slide}{-1}
+\newcommand\slide{\stepcounter{slide} \blue{Slide \theslide}}
+
+% note
+\usepackage{marginnote}    % note in margin
+% \renewcommand*{\raggedleftmarginnote}{}
+\reversemarginpar
+
+
+% color
+\usepackage{xcolor}
+\definecolor{lblue}{RGB}{0, 114, 206}
+\newcommand{\bb}[1]{\textbf{\textcolor{lblue}{#1}}}
+\newcommand{\blue}[1]{\textcolor{lblue}{#1}}
+\newcommand{\red}[1]{\textbf{\textcolor{red}{#1}}}
+
+% misc
+\usepackage{lipsum}
