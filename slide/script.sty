@@ -16,12 +16,12 @@ marginparwidth=3cm, marginparsep=5mm}
 % counter
 \newcounter{slide}
 \setcounter{slide}{-1}
-\newcommand\slide{\stepcounter{slide} \blue{Slide \theslide}}
+\newcommand\slide{\stepcounter{slide} Slide \theslide}
 
 % note
 \usepackage{marginnote}    % note in margin
-% \renewcommand*{\raggedleftmarginnote}{}
 \reversemarginpar
+\newcommand{\slidenote}[1]{\marginnote{\blue{\slide} \\ \textcolor{gray}{#1}}[.32cm]}
 
 
 % color
