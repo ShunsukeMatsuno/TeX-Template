@@ -9,8 +9,9 @@ LaTeX original style sheets
 
 # Installation 
 ## Manually 
-- Run `kpsewhich -var-value=TEXMFHOME`
-  - On my Linux, it returns, `/usr/local/texlive/texmf-local/`
+- Run `kpsewhich -var-value=TEXMFLOCAL` (or alternatively use user-specific directory) 
+  - On Linux, it will typically return, `/usr/local/texlive/texmf-local/`
+  - On Windows, it will typically return `C:/texlive/texmf-local`
 - Put the style sheets in `TEXMFHOME/tex/latex/local`
 - Put the bst sheets in `TEXMFHOME/bibtex/bst/local`
 
