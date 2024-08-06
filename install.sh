@@ -1,5 +1,5 @@
 #!/bin/sh
-TEXMFHOME=$(kpsewhich -var-value=TEXMFHOME)
+TEXMFHOME=$(kpsewhich -var-value=TEXMFLOCAL)
 
 path_sty=$TEXMFHOME/tex/latex/local
 path_bst=$TEXMFHOME/bibtex/bst/local
