@@ -1,8 +1,4 @@
 #!/bin/sh
-git clone https://github.com/ShunsukeMatsuno/TeX-Template
-
-cd TeX-Template
-
 TEXMFHOME=$(kpsewhich -var-value=TEXMFHOME)
 
 path_sty=$TEXMFHOME/tex/latex/local
