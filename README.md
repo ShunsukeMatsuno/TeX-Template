@@ -16,7 +16,7 @@ LaTeX original style sheets
 - Put the bst sheets in `TEXMFHOME/bibtex/bst/local`
 
 ## Using scripts
-### Linux
+On Windows, run this on `git bash`.
 ```bash
 git clone https://github.com/ShunsukeMatsuno/TeX-Template
 cd Tex-Template
