@@ -8,6 +8,7 @@ LaTeX original style sheets
 - `slide/script.sty`: presentation script
 
 # Installation 
+Prerequisite: TeX Live 2024
 ## Manually 
 - Run `kpsewhich -var-value=TEXMFLOCAL` (or alternatively use user-specific directory) 
   - On Linux, it will typically return, `/usr/local/texlive/texmf-local/`
@@ -18,7 +19,9 @@ LaTeX original style sheets
 ## Using scripts
 On Windows, run this on `git bash`.
 ```bash
+cd ~/Downloads    # optional
 git clone https://github.com/ShunsukeMatsuno/TeX-Template
 cd Tex-Template
 sh ./install.sh
 ```
+After successful installation you can remove the cloned repo.
