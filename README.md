@@ -16,7 +16,7 @@ LaTeX original style sheets
 
 ## Using scripts
 ### Linux
-```
+```bash
 git clone https://github.com/ShunsukeMatsuno/TeX-Template
 cd Tex-Template
 sh ./install.sh
