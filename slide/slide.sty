@@ -1,6 +1,24 @@
 % theme
 \usetheme[progressbar=frametitle, numbering=fraction]{metropolis} % Use metropolis theme
 
+% Transparent overlay
+\setbeamercovered{still covered={\opaqueness<1->{15}},again covered={\opaqueness<1->{60}}}
+\makeatletter
+\newcommand*\fix@beamer@close{%
+\ifnum\beamer@trivlistdepth>0
+    \beamer@closeitem
+\fi
+}
+\newcommand*\fix@beamer@open{%
+\ifnum\beamer@trivlistdepth>0
+    \gdef\beamer@closeitem{}%
+\fi
+}
+\BeforeBeginEnvironment{itemize}{\fix@beamer@close}
+\AfterEndEnvironment{itemize}{\fix@beamer@open}
+\makeatother
+
+
 % color, font
 \usepackage{mlmodern}  % Bold Computer Modern
 \usepackage{xcolor}
