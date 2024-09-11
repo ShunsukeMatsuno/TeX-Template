@@ -21,6 +21,14 @@
 %%%% Title %%%%
 \usepackage{titling}
 
+% Footnote for acknowledgement 
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
 %%%% Paragraph %%%%
 \parskip=5pt plus 1pt
 \parindent=30pt
