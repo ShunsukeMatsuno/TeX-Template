@@ -50,6 +50,11 @@
 \usepackage{enumitem}
 \setlist{nosep}    % To remove the vertical space altogether in all lists
 
+%%%% Footnote with line break in the editor %%%%
+% https://tex.stackexchange.com/questions/94563/new-line-for-footnote-without-blank-space
+\usepackage{xpatch}
+\xpretocmd{\footnote}{\unskip}{}{}
+
 %%%% Appendix %%%%
 \usepackage{apptools}
 \AtAppendix{\counterwithin{lemma}{section}}
