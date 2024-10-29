@@ -2,12 +2,34 @@
 %%%%%%%%%%%%%%%%%%% Documents %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\ProvidesPackage{paper}[template for academic paper]
+
 %%%%%%%%%%%%%%%%%%%%%
 %% Document configuration
 %%%%%%%%%%%%%%%%%%%%%
 
 %%%% Line spacing %%%%
-\usepackage[onehalfspacing]{setspace}   % ! `onehalfspacing` or 'doublespacing'
+%* \usepackage[onehalf]{paper} - onehalf spacing
+%* \usepackage[double]{paper}  - double spacing
+%* \usepackage{paper}          - single spacing
+\newif\if@onehalfoption\@onehalfoptionfalse
+\newif\if@doubleoption\@doubleoptionfalse
+\DeclareOption{onehalf}{\@onehalfoptiontrue}
+\DeclareOption{double}{\@doubleoptiontrue}
+\DeclareOption*{\OptionNotUsed}
+
+\ProcessOptions\relax
+
+\if@onehalfoption
+  \RequirePackage[onehalfspacing]{setspace}
+\else
+\if@doubleoption
+  \RequirePackage[doublespacing]{setspace}
+\else
+  \RequirePackage[singlespacing]{setspace}
+\fi
+\fi
+
 \AtBeginDocument{\frenchspacing}
 
 %%%% Section numbering depth %%%%
