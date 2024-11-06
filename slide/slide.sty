@@ -1,52 +1,53 @@
+%%% Beamer slide template
+
 % theme
 \usetheme[progressbar=frametitle, numbering=fraction]{metropolis} % Use metropolis theme
 
-% Transparent overlay
-\setbeamercovered{still covered={\opaqueness<1->{15}},again covered={\opaqueness<1->{60}}}
-\makeatletter
-\newcommand*\fix@beamer@close{%
-\ifnum\beamer@trivlistdepth>0
-    \beamer@closeitem
-\fi
-}
-\newcommand*\fix@beamer@open{%
-\ifnum\beamer@trivlistdepth>0
-    \gdef\beamer@closeitem{}%
-\fi
-}
-\BeforeBeginEnvironment{itemize}{\fix@beamer@close}
-\AfterEndEnvironment{itemize}{\fix@beamer@open}
-\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%  Styles  %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-% color, font
+%%%% Fonts %%%%%
 \usepackage{mlmodern}  % Bold Computer Modern
-\usepackage{xcolor}
-\usecolortheme{orchid}
 \usefonttheme{professionalfonts}
 \setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
-
 \DeclareFontFamily{OMX}{mlmex}{}
 \DeclareFontShape{OMX}{mlmex}{m}{n}{%
    <->mlmex10%
    }{} 
 
-%% define colour
+%%%% Colors %%%%%
+\usepackage{xcolor}
+\usecolortheme{orchid}
+
+% new colors
 \definecolor{lblue}{RGB}{0, 114, 206}
 \definecolor{gray}{RGB}{111, 112, 112}
 
-% misc
-\usepackage{lipsum}
+% Macros
+\newcommand{\bb}[1]{\textbf{\textcolor{lblue}{#1}}}
+\newcommand{\red}[1]{\textbf{\textcolor{red}{#1}}}
+\newcommand{\blue}[1]{\textbf{\textcolor{lblue}{#1}}}
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+\newcommand{\green}[1]{\textcolor{olive}{#1}}
 
-%% Change Metropolice Theme to Blue
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%  Modifying the Theme  %%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{progress bar in head/foot}{}
 \setbeamercolor{progress bar}{fg=lblue,bg=lblue}
 \setbeamercolor{frametitle}{fg=lblue,bg=lblue!20}
 \setbeamercolor{title separator}{fg=lblue,bg=lblue}
 % \setbeamercolor{progress bar in head/foot}{fg=lblue,bg=lblue}
 \setbeamercolor{progress bar in section page}{fg=lblue,bg=lblue}
+\setbeamercolor{block title}{bg=lblue}
+% frame breaks
+\setbeamertemplate{frametitle continuation}{(\insertcontinuationcount)}
 
-% bullet point
+% box
+\AtBeginEnvironment{alertenv}{\setbeamercolor{item}{fg=olive}}
+
+%%%% Bullet Points %%%%%
 \setbeamertemplate{itemize item}[square]
 \setbeamertemplate{itemize subitem}[default]
 \setbeamertemplate{itemize subsubitem}[circle]
@@ -55,11 +56,13 @@
 \setbeamercolor{itemize subitem}{fg=cyan!50}
 \setbeamercolor{itemize subsubitem}{fg=cyan!50}
 
-%% Block colour
-\setbeamercolor{block title}{bg=lblue}
 
-% frame breaks
-\setbeamertemplate{frametitle continuation}{(\insertcontinuationcount)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%  Miscs  %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{lipsum}
+
 
 % hyper ref
 \usepackage{hyperref} 
@@ -83,7 +86,30 @@
 % table
 \usepackage{wrapfig}
 
-% math
+
+% Transparent overlay
+\setbeamercovered{still covered={\opaqueness<1->{15}},again covered={\opaqueness<1->{60}}}
+\makeatletter
+\newcommand*\fix@beamer@close{%
+\ifnum\beamer@trivlistdepth>0
+    \beamer@closeitem
+\fi
+}
+\newcommand*\fix@beamer@open{%
+\ifnum\beamer@trivlistdepth>0
+    \gdef\beamer@closeitem{}%
+\fi
+}
+\BeforeBeginEnvironment{itemize}{\fix@beamer@close}
+\AfterEndEnvironment{itemize}{\fix@beamer@open}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%  Math  %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Basic Packages %%%%
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}
@@ -91,11 +117,6 @@
 \newtheorem{prop}{Proposition}
 
 % Color Macro
-\newcommand{\bb}[1]{\textbf{\textcolor{lblue}{#1}}}
-\newcommand{\red}[1]{\textbf{\textcolor{red}{#1}}}
-\newcommand{\blue}[1]{\textbf{\textcolor{lblue}{#1}}}
-\newcommand{\gray}[1]{\textcolor{gray}{#1}}
-\newcommand{\green}[1]{\textcolor{olive}{#1}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\oo}{\mathcal{O}}
@@ -124,9 +145,3 @@
 \newtheorem{summary}[theorem]{Summary}
 \newtheorem{prediction}{Prediction}
 
-
-% Macro specific to this document
-\newcommand{\al}{\underline{a}}
-\newcommand{\ah}{\overline{a}}
-
-\AtBeginEnvironment{alertenv}{\setbeamercolor{item}{fg=olive}}
