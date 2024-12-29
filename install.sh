@@ -5,6 +5,9 @@ path_sty=$TEXMFHOME/tex/latex/local
 path_bst=$TEXMFHOME/bibtex/bst/local
 path_img=$TEXMFHOME/tex/latex/local/images
 
+# Ensure the /images directory exists
+mkdir -p "$path_img"
+
 cp ./paper/paper.sty $path_sty
 cp ./paper/aea.bst $path_bst
 
