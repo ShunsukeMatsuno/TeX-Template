@@ -1,0 +1,65 @@
+#\DeclareLyXModule[tcolorbox.sty]{My Custom Frame Box}
+#\DeclareCategory{Boxes}
+#Description: Defines a custom tcolorbox environment 'myframe' as a flexible inset.
+
+#% Do not delete the line below; configure depends on it
+
+Format 6 # Correct format for LyX 2.3.x / 2.4.x
+
+# Preamble to add the package and the custom box definition
+Preamble
+    # Ensure tcolorbox with skins is loaded
+    \usepackage[skins]{tcolorbox}
+    # Define the custom 'myframe' environment
+    \newtcolorbox{myframe}[2][]{%
+      enhanced,colback=white,colframe=black,coltitle=black,
+      sharp corners,boxrule=0.4pt,
+      fonttitle=\itshape,
+      attach boxed title to top left={yshift=-0.3\baselineskip-0.4pt,xshift=2mm},
+      boxed title style={tile,size=minimal,left=0.5mm,right=0.5mm,
+        colback=white,before upper=\strut},
+      title={#2},#1 % Mandatory title (#2), Optional settings (#1)
+    }
+EndPreamble
+
+# Define the custom inset using InsetLayout Flex:Name
+InsetLayout Flex:My_Frame_Box
+    LyXType         custom        # Type of inset
+    Decoration      classic       # Use the standard inset frame decoration in LyX
+    LabelString     "MyFrame"     # Label displayed on the inset border in LyX GUI
+    LatexType       environment   # Maps to a LaTeX environment
+    LatexName       myframe       # The name of the LaTeX environment (\begin{myframe}...)
+    Requires        tcolorbox     # Explicitly declare the LaTeX package requirement
+    KeepEmpty       1             # Keep the inset in LyX even if it has no content
+    ResetsFont      true          # Text inside starts with default font settings
+
+    # --- Define Arguments ---
+    # Arguments are processed in order: Optional (#1), Mandatory (#2)
+
+    # Argument 1: Corresponds to the optional [#1] in \newtcolorbox{myframe}[2][]{...}
+    Argument 1
+        LabelString     "Options"    # GUI Label for this argument field
+        TooltipString   "Optional tcolorbox settings (e.g., 'colframe=red', 'sharp corners=all')"
+        Mandatory       0            # 0 = Optional argument
+        PassThruChars   "\[]{}"      # Allows common LaTeX characters in options
+    EndArgument
+
+    # Argument 2: Corresponds to the mandatory {#2} in \newtcolorbox{myframe}[2][]{...}
+    Argument 2
+        LabelString     "Title"      # GUI Label for this argument field
+        TooltipString   "Mandatory title for the frame box"
+        Mandatory       1            # 1 = Mandatory argument
+        AutoInsert      1            # Automatically create this argument field in LyX
+    EndArgument
+    # --- End Arguments ---
+
+    # Menu string for Insert > Custom Insets menu
+    MenuString      "My Frame Box"
+    # Optional: Specify an icon (requires icon file)
+    # Icon            "tcolorbox.png"
+
+    # How content inside the inset behaves (standard paragraph layout)
+    Standard        1
+    AlignPossible   Left, Right, Center, Block # Allowed alignments for content inside
+
+End

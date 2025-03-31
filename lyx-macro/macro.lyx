@@ -167,15 +167,6 @@ theorems-ams-bytype
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\ps}[3]{\prescript{#1}{#2}{#3}}
-{_{#2}^{#1}#3}
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FormulaMacro
 \newcommand{\argmax}{\mathop{{\rm arg~max}}\limits}
 {\mathop{{\rm arg~max}}\limits}
 \end_inset
@@ -184,6 +175,15 @@ theorems-ams-bytype
 \begin_inset FormulaMacro
 \newcommand{\argmin}{\mathop{{\rm arg~min}}\limits}
 {\mathop{{\rm arg~min}}\limits}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\ps}[3]{\prescript{#1}{#2}{#3}}
+{_{#2}^{#1}#3}
 \end_inset
 
 
