@@ -8,7 +8,7 @@ LaTeX original style sheets
 - `slide/script.sty`: presentation script
 
 # Installation 
-Prerequisite: TeX Live 2024
+Prerequisite: TeX Live 2025
 ## Manually 
 - Run `kpsewhich -var-value=TEXMFLOCAL` (or alternatively use user-specific directory) 
   - On Linux, it will typically return, `/usr/local/texlive/texmf-local/`
