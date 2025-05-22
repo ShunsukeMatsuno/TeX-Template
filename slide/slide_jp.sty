@@ -1,0 +1,325 @@
+% theme
+
+\usetheme[progressbar=frametitle, numbering=fraction]{metropolis} % Use metropolis theme
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%  Styles  %%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%% Fonts %%%%%
+
+% \usepackage{mlmodern}  % Bold Computer Modern
+
+\usefonttheme{professionalfonts}
+
+
+
+% 欧文フォント
+
+\usepackage[no-math]{fontspec}
+
+\setmainfont{TeX Gyre Termes}
+
+\setsansfont{TeX Gyre Heros}
+
+
+
+% 日本語フォント設定
+
+\usepackage{luatexja-fontspec}
+
+\setmainjfont[BoldFont=IPAexGothic]{IPAexMincho}  % ゴシック：Regular と Bold を両方登録
+
+\setsansjfont[BoldFont=IPAexGothic]{IPAexGothic}  % 本文：明朝／太字は IPAexGothic
+
+
+
+% スライド全体を sans 系に統一
+
+\renewcommand*\familydefault{\sfdefault}         % 欧文も sans
+
+\renewcommand{\kanjifamilydefault}{\gtdefault}   % 日本語をゴシックに
+
+
+
+%%%% Colors %%%%%
+
+\usepackage{xcolor}
+
+\usecolortheme{orchid}
+
+
+
+% new colors
+
+\definecolor{lblue}{RGB}{0, 114, 206}
+
+\definecolor{orange}{RGB}{255, 83, 73}
+
+\definecolor{gray}{RGB}{111, 112, 112}
+
+\definecolor{darkgray}{RGB}{125, 125, 125}
+
+
+
+% Macros
+
+\newcommand{\bb}[1]{\textbf{#1}}
+
+\newcommand{\red}[1]{\textbf{\textcolor{red}{#1}}}
+
+\newcommand{\blue}[1]{\textbf{\textcolor{lblue}{#1}}}
+
+\newcommand{\orange}[1]{\textbf{\textcolor{orange}{#1}}}
+
+\newcommand{\gray}[1]{\textcolor{gray}{#1}}
+
+\newcommand{\darkgray}[1]{\textcolor{darkgray}{#1}}
+
+\newcommand{\green}[1]{\textcolor{olive}{#1}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%  Modifying the Theme  %%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamertemplate{progress bar in head/foot}{}
+
+\setbeamercolor{progress bar}{fg=lblue,bg=lblue}
+
+\setbeamercolor{frametitle}{fg=lblue,bg=lblue!20}
+
+\setbeamercolor{title separator}{fg=lblue,bg=lblue}
+
+% \setbeamercolor{progress bar in head/foot}{fg=lblue,bg=lblue}
+
+\setbeamercolor{progress bar in section page}{fg=lblue,bg=lblue}
+
+\setbeamercolor{block title}{bg=lblue}
+
+% frame breaks
+
+\setbeamertemplate{frametitle continuation}{(\insertcontinuationcount)}
+
+
+
+% box
+
+\AtBeginEnvironment{alertenv}{\setbeamercolor{item}{fg=olive}}
+
+
+
+%%%% Bullet Points %%%%%
+
+\setbeamertemplate{itemize item}[square]
+
+\setbeamertemplate{itemize subitem}[default]
+
+\setbeamertemplate{itemize subsubitem}[circle]
+
+% \setbeamercolor{local structure}{fg=cyan!50}
+
+\setbeamercolor{itemize item}{fg=cyan!50}
+
+\setbeamercolor{itemize subitem}{fg=cyan!50}
+
+\setbeamercolor{itemize subsubitem}{fg=cyan!50}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%  Miscs  %%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{lipsum}
+
+
+
+
+
+% hyper ref
+
+\usepackage{hyperref} 
+
+\hypersetup{
+
+    colorlinks=true,
+
+    linkcolor=black,
+
+    filecolor=black,      
+
+    urlcolor=black,
+
+    }
+
+\newcommand{\changeurlcolor}[1]{\hypersetup{urlcolor=#1}} 
+
+
+
+% Underline
+
+\usepackage{ulem}
+
+\newcommand\ulblue{\bgroup\markoverwith
+
+{\textcolor{lblue}{\rule[-0.5ex]{2pt}{0.4pt}}}\ULon}
+
+
+
+% tikz
+
+\usepackage{tikz}
+
+\usepackage{standalone}
+
+
+
+% table
+
+\usepackage{wrapfig}
+
+
+
+% frame
+
+\usepackage{mdframed}
+
+
+
+% Transparent overlay
+
+\setbeamercovered{still covered={\opaqueness<1->{15}},again covered={\opaqueness<1->{60}}}
+
+\makeatletter
+
+\newcommand*\fix@beamer@close{%
+
+\ifnum\beamer@trivlistdepth>0
+
+    \beamer@closeitem
+
+\fi
+
+}
+
+\newcommand*\fix@beamer@open{%
+
+\ifnum\beamer@trivlistdepth>0
+
+    \gdef\beamer@closeitem{}%
+
+\fi
+
+}
+
+\BeforeBeginEnvironment{itemize}{\fix@beamer@close}
+
+\AfterEndEnvironment{itemize}{\fix@beamer@open}
+
+\makeatother
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%  Math  %%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%% Basic Packages %%%%
+
+\usepackage{amsmath}
+
+\usepackage{amssymb}
+
+\usepackage{amsfonts}
+
+\usepackage{mathtools}
+
+\mathtoolsset{showonlyrefs=true}    % show equation number only if it is referenced
+
+\usepackage{amsthm} 
+
+\usepackage{amsfonts}
+
+\usepackage{bm}   % vector
+
+\usepackage{bbm}   % indicator function
+
+
+
+
+
+% Macros
+
+\newcommand{\E}{\mathbb{E}}
+
+\newcommand{\A}{\mathcal{A}}
+
+\newcommand{\oo}{\mathcal{O}}
+
+\newcommand{\U}{\mathcal{U}}
+
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\Prob}{\mathbb{P}}
+
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+
+\newcommand{\argmax}{\mathop{\rm arg~max}\limits}
+
+
+
+%% Project-specific macro
+
+\newcommand{\pih}{\overline{\pi}}
+
+
+
+% theorem macro
+
+\newtheorem{algorithm}[theorem]{Algorithm}
+
+\newtheorem{axiom}[theorem]{Axiom}
+
+\newtheorem{case}[theorem]{Case}
+
+\newtheorem{claim}{Claim}
+
+\newtheorem{conclusion}[theorem]{Conclusion}
+
+\newtheorem{condition}[theorem]{Condition}
+
+\newtheorem*{cL}{Condition L}
+
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newtheorem{criterion}[theorem]{Criterion}
+
+\newtheorem{exercise}[theorem]{Exercise}
+
+\newtheorem{proposition}{Proposition}
+
+\newtheorem{remark}[theorem]{Remark}
+
+\newtheorem{summary}[theorem]{Summary}
+
+\newtheorem{prediction}{Prediction}
