@@ -19,8 +19,6 @@ cp ./paper/aea.bst "$path_bst"
 
 # Copy all .sty files from the slide directory
 cp ./slide/*.sty "$path_sty"
-# The original script copied script.sty and slide.sty explicitly.
-# This glob will copy them and any other .sty files like slide_jp.sty.
 
 # Copy the biblatex configuration file
 cp ./biblatex/biblatex-aer.tex "$path_sty"
