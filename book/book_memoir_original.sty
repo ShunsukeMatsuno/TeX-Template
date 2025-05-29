@@ -1,0 +1,214 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% Documents %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Document configuration
+%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Fonts %%%%
+\usepackage{fontspec} 
+
+
+%%%% Line spacing %%%%
+%\AtBeginDocument{\OnehalfSpacing}   % For single spacing, comment out this
+\AtBeginDocument{\frenchspacing}
+
+
+%%%% Section numbering depth %%%%
+\setcounter{secnumdepth}{2}
+
+%%%% Margin %%%%
+\setulmarginsandblock{4cm}{4cm}{*}
+\setlrmarginsandblock{3cm}{3cm}{*}
+\checkandfixthelayout
+
+%%%% Chapter headings %%%%
+\setlength{\beforechapskip}{-20pt}
+\setlength{\midchapskip}{10pt}
+\setlength{\afterchapskip}{30pt}
+
+%%%% Title %%%%
+\usepackage{titling}
+% \aliaspagestyle{title}{empty}
+
+% Footnote for acknowledgement 
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+%%%% Paragraph %%%%
+\parskip=5pt plus 1pt
+\parindent=30pt
+
+%%%% Color %%%%
+\usepackage{xcolor}
+
+% Original colors
+\definecolor{lblue}{RGB}{0, 114, 206}
+\definecolor{gray}{RGB}{111, 112, 112}
+\definecolor{darkgray}{RGB}{125, 125, 125}
+\definecolor{lgreen}{RGB}{47, 139, 89}
+
+%%%% Hyper ref %%%%
+\usepackage[pdfencoding=auto,psdextra,pdfusetitle]{hyperref} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=lgreen,
+    citecolor=lgreen,
+    filecolor=lgreen,      
+    urlcolor=lgreen
+}
+\pdfstringdefDisableCommands{%   % https://tex.stackexchange.com/questions/466229/hyperref-option-pdfusetitle-with-thanks
+  \let\thanks\@gobble
+}
+%%%% Enumerate (adjust space) %%%%
+\usepackage{enumitem}
+\setlist{nosep}    % To remove the vertical space altogether in all lists
+
+%%%% Footnote with line break in the editor %%%%
+% https://tex.stackexchange.com/questions/94563/new-line-for-footnote-without-blank-space
+\usepackage{xpatch}
+\xpretocmd{\footnote}{\unskip}{}{}
+
+%%%% Appendix %%%%
+\usepackage{apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\AtAppendix{\counterwithin{remark}{section}}
+\AtAppendix{\counterwithin{theorem}{section}}
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Bibliography
+%%%%%%%%%%%%%%%%%%%%%
+\input{biblatex-aer}     % This is in the original template set
+% \RequirePackage{natbib}\setlength{\bibsep}{0.0pt}
+% \usepackage[natbib=true]{biblatex}
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Multifiles
+%%%%%%%%%%%%%%%%%%%%%
+\usepackage[subpreambles=true]{standalone}
+\usepackage{import}
+
+%%%%%%%%%%%%%%%%%%%%%
+%% tikz
+%%%%%%%%%%%%%%%%%%%%% 
+\usepackage{tikz}
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Float
+%%%%%%%%%%%%%%%%%%%%% 
+\usepackage{caption}   % See https://tex.stackexchange.com/questions/58674/the-space-between-the-table-and-its-caption-is-very-small
+\usepackage{booktabs}
+\usepackage{tabulary}
+\usepackage{tabularx}
+\usepackage{wrapfig}
+\usepackage{threeparttable}
+\usepackage{graphicx}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Editting Features
+%%%%%%%%%%%%%%%%%%%%% 
+
+%%%% TODO %%%%
+\newcommand{\TODO}[1]{%
+\ifthenelse { \equal{#1}{}}  %if #1 is empty
+    { \textbf{\textcolor{red}{[TODO]}} }   % if #1 == blank
+    { \textbf{\textcolor{red}{[TODO: #1]}} }   % else (not blank)
+}
+\usepackage{marginnote}    % note in margin
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Quote
+%%%%%%%%%%%%%%%%%%%%%
+\usepackage{epigraph}
+\usepackage{etoolbox}
+\usepackage{calc}
+\renewcommand{\epigraphsize}{\normalsize}
+
+% % normal epigraph
+% \setlength\epigraphwidth{8cm}
+% \setlength\epigraphrule{0pt}
+% \patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
+
+% short epigraph (auto width), does not work with long epigraph
+\newcommand{\mytextformat}{\itshape\epigraphsize}
+\setlength\epigraphrule{0pt}
+\newenvironment{mytext}{\mytextformat}{}
+\newenvironment{mysource}{\scshape\hfill}{}
+\renewcommand{\textflush}{mytext} 
+\renewcommand{\sourceflush}{mysource}
+\let\originalepigraph\epigraph 
+\renewcommand{\epigraph}[2]%
+   {\setlength{\epigraphwidth}{\widthof{\mytextformat#1}}\originalepigraph{#1}{#2}}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Misc
+%%%%%%%%%%%%%%%%%%%%% 
+\usepackage{lipsum}
+\usepackage{ifthen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% Math %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Basics
+%%%%%%%%%%%%%%%%%%%%% 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs=true}    % show equation number only if it is referenced
+\usepackage{amsthm} 
+\usepackage{amsfonts}
+\usepackage{bm}   % vector
+\usepackage{bbm}   % indicator function
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Math Macro
+%%%%%%%%%%%%%%%%%%%%% 
+
+%%%% Standard Macro %%%%
+% mathbb
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+
+% mathcal
+\newcommand{\EE}{\mathcal{E}}
+\newcommand{\NN}{\mathcal{N}}
+
+% others
+\newcommand{\prob}{\mathbb{P}}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+\newcommand{\argmax}{\mathop{\rm arg~max}\limits}
+\newcommand\setItemnumber[1]{\setcounter{enumi}{\numexpr#1-1\relax}}
+
+% theorem macro
+\newtheorem{theorem}{Theorem}
+\newtheorem{assumption}{Assumption}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}{Case}
+\newtheorem{claim}{Claim}
+\newtheorem{conclusion}{Conclusion}
+\newtheorem{condition}{Condition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{corollary}{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{example}{Example}
+\newtheorem{exercise}{Exercise}
+\newtheorem{lemma}{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition}
+
+
+\theoremstyle{definition}
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
