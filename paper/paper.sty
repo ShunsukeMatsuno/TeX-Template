@@ -82,8 +82,12 @@
 % Original colors
 \definecolor{lblue}{RGB}{0, 114, 206}
 \definecolor{gray}{RGB}{111, 112, 112}
+\definecolor{orangered}{RGB}{255, 69, 0}
 \definecolor{darkgray}{RGB}{125, 125, 125}
 \definecolor{lgreen}{RGB}{47, 139, 89}
+
+% Colored texts
+\newcommand{\orangered}[1]{\textbf{\textcolor{orangered}{#1}}}
 
 %%%% Hyper ref %%%%
 \RequirePackage[pdfencoding=auto,psdextra,pdfusetitle]{hyperref} 
@@ -97,9 +101,13 @@
 \pdfstringdefDisableCommands{%   % https://tex.stackexchange.com/questions/466229/hyperref-option-pdfusetitle-with-thanks
   \let\thanks\@gobble
 }
-%%%% Enumerate (adjust space) %%%%
+%%%% Enumerate %%%%
 \RequirePackage{enumitem}
 \setlist{nosep}    % To remove the vertical space altogether in all lists
+
+% paragraph list
+\newlist{paralist}{enumerate}{1}
+\setlist[paralist,1]{label=\textparagraph\arabic*, left=2em, labelsep=0.5em}
 
 %%%% Footnote with line break in the editor %%%%
 % https://tex.stackexchange.com/questions/94563/new-line-for-footnote-without-blank-space
@@ -150,8 +158,8 @@
 %%%% TODO %%%%
 \newcommand{\TODO}[1]{%
 \ifthenelse { \equal{#1}{}}  %if #1 is empty
-    { \textbf{\textcolor{red}{[TODO]}} }   % if #1 == blank
-    { \textbf{\textcolor{red}{[TODO: #1]}} }   % else (not blank)
+    { \textbf{\textcolor{red}{[TODO]}}\ignorespaces}   % if #1 == blank
+    { \textbf{\textcolor{red}{[TODO: #1]}}\ignorespaces}   % else (not blank)
 }
 \RequirePackage{marginnote}    % note in margin
 
