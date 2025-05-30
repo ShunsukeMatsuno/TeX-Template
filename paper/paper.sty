@@ -8,21 +8,27 @@
 %% Document configuration
 %%%%%%%%%%%%%%%%%%%%%
 
-%%%% Fonts %%%%
-\usepackage{fontspec}
-\usepackage{mathtools}     % load before unicode-math
-\usepackage{polyglossia}
-% \usepackage{unicode-math}
-% \setmainfont{Libertinus Serif}
-% \setmathfont{Libertinus Math}   % Matching math font
-% % % % % % \setmathfont{texgyrepagella-math}[range={"0E3F,"2052,"205F-"2064,"20A1,"20A6,"20A9,"20B2,"20D2-"20D5,"20D8,"20DD-"20DF,"20E4-"20E6,"20E8-"20ED,"20F0,"2107,"2117,"211E,"212A-"212B,"213C-"2140,"2145-"2149,"224E-"224F,"22B8-"22BF,"22C4,"22C7,"22CB-"22CC,"22D0-"22D3,"22D5,"2305-"2306,"2319,"23B2-"23B3,"23D0,"23E0-"23E1,"2422,"2500,"2502,"250C,"2510,"2514,"2518,"251C,"2524,"252C,"2534,"253C,"2581,"2588,"2591-"2593,"25AA-"25AD,"25EF,"2713,"2720,"27A1,"27D8-"27DE,"27E0-"27E3,"27F4,"2A09,"2A11,"2A2F,"2A85-"2A86,"2A89-"2A8C,"2A95-"2A96,"2B04-"2B07,"2B0C-"2B0D,"2B1A,"3016-"3017,"FB00-"FB04,"FEFF}, Scale=MatchUppercase]
-% % % % % % % % % % % % % \setmathfont{NewCMMath-Regular.otf}[range={"007F,"0900-"097F,"2038,"203F-"2041,"2043,"2045-"2046,"204C-"204E,"2050-"2051,"2053-"2056,"2058-"205E,"20E7,"2104,"2108,"2114,"211F,"2121,"2123,"2125,"2129,"2132,"213A-"213B,"2141-"2144,"214A-"214E,"22B0-"22B1,"22D4,"22F2-"22FF,"2301,"2304,"2307,"230C-"230F,"2311-"2318,"231A-"231B,"2324-"2325,"2328,"232C-"237C,"237E-"237F,"2381-"239A,"23B6,"23B8-"23CF,"23D1-"23D2,"23D4-"23DB,"23E2-"23FF,"2501,"2503-"250B,"250D-"250F,"2511-"2513,"2515-"2517,"2519-"251B,"251D-"2523,"2525-"252B,"252D-"2533,"2535-"253B,"253D-"2580,"2582-"2587,"2589-"2590,"2594-"259F,"25A2-"25A9,"25AE-"25B1,"25B4-"25B5,"25B8-"25BB,"25BE-"25BF,"25C2-"25C5,"25C8,"25CC-"25CD,"25D8-"25E5,"25E7-"25EE,"25F0-"2600,"2606,"2612,"2621,"267E,"2680-"2689,"26AA-"26AB,"26B2,"2726,"272A,"2736,"273D,"275A,"2772-"2773,"279B,"27C0-"27C1,"27C3-"27D7,"27DF,"27E4-"27E5,"27F0-"27F1,"2900-"2901,"2905,"2908-"2909,"290C-"2970,"2976-"2981,"2983-"2986,"2989-"29B8,"29BB-"29F4,"29F8-"29FB,"29FE-"29FF,"2A07-"2A08,"2A0A-"2A0B,"2A0D-"2A10,"2A12-"2A2E,"2A30-"2A35,"2A37-"2A3D,"2A40-"2A7C,"2A7F-"2A84,"2A8D-"2A94,"2A97-"2AAE,"2AB7-"2B03,"2B08-"2B0B,"2B0E-"2B19,"2B1B-"2B2F,"2B32,"2B34-"2B73,"2B76-"2B95,"2B97-"2BFF,"3012,"3030,"E000-"E03D,"E041-"E072,"E376-"E377,"E395,"E397-"E39B,"E3D3,"EA57}, Scale=MatchUppercase]
-% \setmathfont{NewCMMath-Regular.otf}[range=\mathcal]
-% \usepackage{esint}
+%%%% Language %%%%
+\RequirePackage{polyglossia}
+\setdefaultlanguage{english}
+\setotherlanguage{latin}
+\setotherlanguage{hindi} 
+\newfontfamily\hindifont[Script=Devanagari]{Noto Serif Devanagari}
 
+%%%% Fonts %%%%
+\RequirePackage{fontspec}
+\RequirePackage{mathtools}     % load before unicode-math
+\RequirePackage{unicode-math}
+\setmainfont{Libertinus Serif}
+\setmathfont{Libertinus Math}   % Matching math font
+\setmathfont{texgyrepagella-math}[range={"0E3F,"2052,"205F-"2064,"20A1,"20A6,"20A9,"20B2,"20D2-"20D5,"20D8,"20DD-"20DF,"20E4-"20E6,"20E8-"20ED,"20F0,"2107,"2117,"211E,"212A-"212B,"213C-"2140,"2145-"2149,"224E-"224F,"22B8-"22BF,"22C4,"22C7,"22CB-"22CC,"22D0-"22D3,"22D5,"2305-"2306,"2319,"23B2-"23B3,"23D0,"23E0-"23E1,"2422,"2500,"2502,"250C,"2510,"2514,"2518,"251C,"2524,"252C,"2534,"253C,"2581,"2588,"2591-"2593,"25AA-"25AD,"25EF,"2713,"2720,"27A1,"27D8-"27DE,"27E0-"27E3,"27F4,"2A09,"2A11,"2A2F,"2A85-"2A86,"2A89-"2A8C,"2A95-"2A96,"2B04-"2B07,"2B0C-"2B0D,"2B1A,"3016-"3017,"FB00-"FB04,"FEFF}, Scale=MatchUppercase]
+\setmathfont{NewCMMath-Regular.otf}[range={"007F,"0900-"097F,"2038,"203F-"2041,"2043,"2045-"2046,"204C-"204E,"2050-"2051,"2053-"2056,"2058-"205E,"20E7,"2104,"2108,"2114,"211F,"2121,"2123,"2125,"2129,"2132,"213A-"213B,"2141-"2144,"214A-"214E,"22B0-"22B1,"22D4,"22F2-"22FF,"2301,"2304,"2307,"230C-"230F,"2311-"2318,"231A-"231B,"2324-"2325,"2328,"232C-"237C,"237E-"237F,"2381-"239A,"23B6,"23B8-"23CF,"23D1-"23D2,"23D4-"23DB,"23E2-"23FF,"2501,"2503-"250B,"250D-"250F,"2511-"2513,"2515-"2517,"2519-"251B,"251D-"2523,"2525-"252B,"252D-"2533,"2535-"253B,"253D-"2580,"2582-"2587,"2589-"2590,"2594-"259F,"25A2-"25A9,"25AE-"25B1,"25B4-"25B5,"25B8-"25BB,"25BE-"25BF,"25C2-"25C5,"25C8,"25CC-"25CD,"25D8-"25E5,"25E7-"25EE,"25F0-"2600,"2606,"2612,"2621,"267E,"2680-"2689,"26AA-"26AB,"26B2,"2726,"272A,"2736,"273D,"275A,"2772-"2773,"279B,"27C0-"27C1,"27C3-"27D7,"27DF,"27E4-"27E5,"27F0-"27F1,"2900-"2901,"2905,"2908-"2909,"290C-"2970,"2976-"2981,"2983-"2986,"2989-"29B8,"29BB-"29F4,"29F8-"29FB,"29FE-"29FF,"2A07-"2A08,"2A0A-"2A0B,"2A0D-"2A10,"2A12-"2A2E,"2A30-"2A35,"2A37-"2A3D,"2A40-"2A7C,"2A7F-"2A84,"2A8D-"2A94,"2A97-"2AAE,"2AB7-"2B03,"2B08-"2B0B,"2B0E-"2B19,"2B1B-"2B2F,"2B32,"2B34-"2B73,"2B76-"2B95,"2B97-"2BFF,"3012,"3030,"E000-"E03D,"E041-"E072,"E376-"E377,"E395,"E397-"E39B,"E3D3,"EA57}, Scale=MatchUppercase]
+\setmathfont{NewCMMath-Regular.otf}[range=\mathcal]
+\RequirePackage{esint}
 
 
 %%%% Line spacing %%%%
+\makeatletter
 %* \usepackage[onehalf]{paper} - onehalf spacing
 %* \usepackage[double]{paper}  - double spacing
 %* \usepackage{paper}          - single spacing
@@ -43,6 +49,7 @@
   \RequirePackage[singlespacing]{setspace}
 \fi
 \fi
+\makeatother
 
 \AtBeginDocument{\frenchspacing}
 
@@ -50,12 +57,12 @@
 \setcounter{secnumdepth}{2}
 
 %%%% Margin %%%%
-\usepackage{geometry}
+\RequirePackage{geometry}
 \geometry{left=25mm,right=25mm,top=30mm,bottom=30mm}
 \setlength{\skip\footins}{1cm}
 
 %%%% Title %%%%
-\usepackage{titling}
+\RequirePackage{titling}
 
 % Footnote for acknowledgement 
 \newcommand\blfootnote[1]{%
@@ -70,7 +77,7 @@
 \parindent=30pt
 
 %%%% Color %%%%
-\usepackage{xcolor}
+\RequirePackage{xcolor}
 
 % Original colors
 \definecolor{lblue}{RGB}{0, 114, 206}
@@ -79,7 +86,7 @@
 \definecolor{lgreen}{RGB}{47, 139, 89}
 
 %%%% Hyper ref %%%%
-\usepackage[pdfencoding=auto,psdextra,pdfusetitle]{hyperref} 
+\RequirePackage[pdfencoding=auto,psdextra,pdfusetitle]{hyperref} 
 \hypersetup{
     colorlinks=true,
     linkcolor=lgreen,
@@ -91,16 +98,16 @@
   \let\thanks\@gobble
 }
 %%%% Enumerate (adjust space) %%%%
-\usepackage{enumitem}
+\RequirePackage{enumitem}
 \setlist{nosep}    % To remove the vertical space altogether in all lists
 
 %%%% Footnote with line break in the editor %%%%
 % https://tex.stackexchange.com/questions/94563/new-line-for-footnote-without-blank-space
-\usepackage{xpatch}
+\RequirePackage{xpatch}
 \xpretocmd{\footnote}{\unskip}{}{}
 
 %%%% Appendix %%%%
-\usepackage{apptools}
+\RequirePackage{apptools}
 \AtAppendix{\counterwithin{lemma}{section}}
 \AtAppendix{\counterwithin{remark}{section}}
 \AtAppendix{\counterwithin{theorem}{section}}
@@ -114,26 +121,26 @@
 %%%%%%%%%%%%%%%%%%%%%
 %% Multifiles
 %%%%%%%%%%%%%%%%%%%%%
-\usepackage[subpreambles=true]{standalone}
-\usepackage{import}
+\RequirePackage[subpreambles=true]{standalone}
+\RequirePackage{import}
 
 %%%%%%%%%%%%%%%%%%%%%
 %% tikz
 %%%%%%%%%%%%%%%%%%%%% 
-\usepackage{tikz}
+\RequirePackage{tikz}
 
 %%%%%%%%%%%%%%%%%%%%%
 %% Float
 %%%%%%%%%%%%%%%%%%%%% 
-\usepackage{caption}   % See https://tex.stackexchange.com/questions/58674/the-space-between-the-table-and-its-caption-is-very-small
-\usepackage{floatrow}
+\RequirePackage{caption}   % See https://tex.stackexchange.com/questions/58674/the-space-between-the-table-and-its-caption-is-very-small
+\RequirePackage{floatrow}
 \floatsetup{capposition=top}
-\usepackage{booktabs}
-\usepackage{tabulary}
-\usepackage{tabularx}
-\usepackage{wrapfig}
-\usepackage{threeparttable}
-\usepackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage{tabulary}
+\RequirePackage{tabularx}
+\RequirePackage{wrapfig}
+\RequirePackage{threeparttable}
+\RequirePackage{graphicx}
 
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -146,14 +153,14 @@
     { \textbf{\textcolor{red}{[TODO]}} }   % if #1 == blank
     { \textbf{\textcolor{red}{[TODO: #1]}} }   % else (not blank)
 }
-\usepackage{marginnote}    % note in margin
+\RequirePackage{marginnote}    % note in margin
 
 %%%%%%%%%%%%%%%%%%%%%
 %% Quote
 %%%%%%%%%%%%%%%%%%%%%
-\usepackage{epigraph}
-\usepackage{etoolbox}
-\usepackage{calc}
+\RequirePackage{epigraph}
+\RequirePackage{etoolbox}
+\RequirePackage{calc}
 \renewcommand{\epigraphsize}{\normalsize}
 
 % % normal epigraph
@@ -176,8 +183,8 @@
 %%%%%%%%%%%%%%%%%%%%%
 %% Misc
 %%%%%%%%%%%%%%%%%%%%% 
-\usepackage{lipsum}
-\usepackage{ifthen}
+\RequirePackage{lipsum}
+\RequirePackage{ifthen}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%% Math %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -186,12 +193,10 @@
 %%%%%%%%%%%%%%%%%%%%%
 %% Basics
 %%%%%%%%%%%%%%%%%%%%% 
-\usepackage{amsmath}
-\usepackage{mathtools}
+\RequirePackage{amsmath}
 \mathtoolsset{showonlyrefs=true}    % show equation number only if it is referenced
-\usepackage{amsthm} 
-\usepackage{amsfonts}
-\usepackage{bm}   % vector
+\RequirePackage{amsthm} 
+\RequirePackage{bm}   % vector
 
 %%%%%%%%%%%%%%%%%%%%%
 %% Math Macro
@@ -230,7 +235,6 @@
 \newtheorem{notation}[theorem]{Notation}
 \newtheorem{problem}[theorem]{Problem}
 \newtheorem{proposition}{Proposition}
-
 
 \theoremstyle{definition}
 \newtheorem{remark}{Remark}

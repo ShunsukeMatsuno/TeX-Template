@@ -106,12 +106,6 @@
 \AtAppendix{\counterwithin{theorem}{section}}
 
 %%%%%%%%%%%%%%%%%%%%%
-%% Bibliography
-%%%%%%%%%%%%%%%%%%%%%
-
-\input{biblatex-aer}    % This is installed to texmf locally with the tex-template repo.
-
-%%%%%%%%%%%%%%%%%%%%%
 %% Multifiles
 %%%%%%%%%%%%%%%%%%%%%
 \usepackage[subpreambles=true]{standalone}
@@ -172,6 +166,12 @@
 \renewcommand{\epigraph}[2]%
    {\setlength{\epigraphwidth}{\widthof{\mytextformat#1}}\originalepigraph{#1}{#2}}
 
+
+   
+%%%%%%%%%%%%%%%%%%%%%
+%% Bibliography
+%%%%%%%%%%%%%%%%%%%%%
+\input{biblatex-aer}    % This is installed to texmf locally with the tex-template repo.
 
 %%%%%%%%%%%%%%%%%%%%%
 %% Misc
@@ -235,3 +235,4 @@
 \theoremstyle{definition}
 \newtheorem{remark}{Remark}
 \newtheorem{definition}{Definition}
+
