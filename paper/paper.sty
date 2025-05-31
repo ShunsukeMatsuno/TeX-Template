@@ -91,6 +91,7 @@
 
 %%%% Hyper ref %%%%
 \RequirePackage[pdfencoding=auto,psdextra,pdfusetitle]{hyperref} 
+\RequirePackage{cleveref}   % cleveref must be loaded after hyperref
 \hypersetup{
     colorlinks=true,
     linkcolor=lgreen,
@@ -204,6 +205,7 @@
 \RequirePackage{amsmath}
 \mathtoolsset{showonlyrefs=true}    % show equation number only if it is referenced
 \RequirePackage{amsthm} 
+\RequirePackage{thmtools} 
 \RequirePackage{bm}   % vector
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -214,6 +216,7 @@
 % mathbb
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
 
 % mathcal
 \newcommand{\EE}{\mathcal{E}}
@@ -225,25 +228,51 @@
 \newcommand{\argmax}{\mathop{\rm arg~max}\limits}
 \newcommand\setItemnumber[1]{\setcounter{enumi}{\numexpr#1-1\relax}}
 
-% theorem macro
-\newtheorem{theorem}{Theorem}
-\newtheorem{assumption}{Assumption}
-\newtheorem{algorithm}{Algorithm}
-\newtheorem{axiom}{Axiom}
-\newtheorem{case}{Case}
-\newtheorem{claim}{Claim}
-\newtheorem{conclusion}{Conclusion}
-\newtheorem{condition}{Condition}
-\newtheorem{conjecture}{Conjecture}
-\newtheorem{corollary}{Corollary}
-\newtheorem{criterion}[theorem]{Criterion}
-\newtheorem{example}{Example}
-\newtheorem{exercise}{Exercise}
-\newtheorem{lemma}{Lemma}
-\newtheorem{notation}[theorem]{Notation}
-\newtheorem{problem}[theorem]{Problem}
-\newtheorem{proposition}{Proposition}
+%%%% theorem macro %%%%
+\declaretheorem[name=Theorem]{theorem} % Main counter, sequential
 
-\theoremstyle{definition}
-\newtheorem{remark}{Remark}
-\newtheorem{definition}{Definition}
+% Environments that share the 'theorem' counter (e.g., Theorem 1, Criterion 2)
+\declaretheorem[name=Criterion, sibling=theorem]{criterion}
+\declaretheorem[name=Notation, sibling=theorem]{notation}
+\declaretheorem[name=Problem, sibling=theorem]{problem}
+
+% Independently numbered sequential environments (e.g., Lemma 1, Lemma 2)
+\declaretheorem[name=Assumption]{assumption}
+\declaretheorem[name=Algorithm]{algorithm}
+\declaretheorem[name=Axiom]{axiom}
+\declaretheorem[name=Case]{case}
+\declaretheorem[name=Claim]{claim}
+\declaretheorem[name=Conclusion]{conclusion}
+\declaretheorem[name=Condition]{condition}
+\declaretheorem[name=Conjecture]{conjecture}
+\declaretheorem[name=Corollary]{corollary} % Will be Corollary 1, Corollary 2
+\declaretheorem[name=Exercise]{exercise}
+\declaretheorem[name=Lemma]{lemma}         % Will be Lemma 1, Lemma 2
+\declaretheorem[name=Proposition]{proposition} % Will be Proposition 1, Proposition 2
+
+% Environments with 'definition' style (sequentially numbered)
+\declaretheorem[name=Definition, style=definition]{definition}
+\declaretheorem[name=Remark, style=definition]{remark}
+\declaretheorem[name=Example, style=definition]{example}
+
+% \newtheorem{theorem}{Theorem}
+% \newtheorem{assumption}{Assumption}
+% \newtheorem{algorithm}{Algorithm}
+% \newtheorem{axiom}{Axiom}
+% \newtheorem{case}{Case}
+% \newtheorem{claim}{Claim}
+% \newtheorem{conclusion}{Conclusion}
+% \newtheorem{condition}{Condition}
+% \newtheorem{conjecture}{Conjecture}
+% \newtheorem{corollary}{Corollary}
+% \newtheorem{criterion}[theorem]{Criterion}
+% \newtheorem{example}{Example}
+% \newtheorem{exercise}{Exercise}
+% \newtheorem{lemma}{Lemma}
+% \newtheorem{notation}[theorem]{Notation}
+% \newtheorem{problem}[theorem]{Problem}
+% \newtheorem{proposition}{Proposition}
+
+% \theoremstyle{definition}
+% \newtheorem{remark}{Remark}
+% \newtheorem{definition}{Definition}

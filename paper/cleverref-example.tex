@@ -1,0 +1,244 @@
+\documentclass[11pt]{article}
+\usepackage{paper}
+
+\title{A Demonstration of Cleveref Cross-Referencing}
+\author{Shunsuke Matsuno}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+This document demonstrates the use of \texttt{cleveref} for cross-referencing various environments. The \texttt{cleveref} package automatically determines the appropriate reference format and excels at handling multiple references elegantly.
+
+\section{Mathematical Environments}
+
+\subsection{Single References}
+
+Let's start with basic mathematical statements:
+
+\begin{theorem}\label{thm:fundamental}
+Every bounded sequence in $\R$ has a convergent subsequence.
+\end{theorem}
+
+\begin{lemma}\label{lem:helper}
+If $\{a_n\}$ is a Cauchy sequence, then it is bounded.
+\end{lemma}
+
+\begin{definition}\label{def:cauchy}
+A sequence $\{a_n\}$ is called \emph{Cauchy} if for every $\varepsilon > 0$, there exists $N \in \N$ such that for all $m, n \geq N$, we have $|a_m - a_n| < \varepsilon$.
+\end{definition}
+
+We can reference these individually: \Cref{thm:fundamental} is the Bolzano-Weierstrass theorem, \Cref{lem:helper} is a standard result, and \Cref{def:cauchy} defines Cauchy sequences.
+
+\subsection{Multiple References of Same Type}
+
+Here are additional results:
+
+\begin{theorem}\label{thm:completeness}
+Every Cauchy sequence in $\R$ converges.
+\end{theorem}
+
+\begin{theorem}\label{thm:existence}
+Every continuous function on a compact set attains its maximum and minimum.
+\end{theorem}
+
+\begin{lemma}\label{lem:bounded}
+Every convergent sequence is bounded.
+\end{lemma}
+
+\begin{lemma}\label{lem:continuity}
+A function is continuous if and only if it preserves limits of sequences.
+\end{lemma}
+
+Now we can demonstrate multiple references:
+\begin{itemize}
+\item Two theorems: \Cref{thm:fundamental,thm:completeness}
+\item Three theorems: \Cref{thm:fundamental,thm:completeness,thm:existence}
+\item Two lemmas: \Cref{lem:helper,lem:bounded}
+\item Multiple lemmas: \Cref{lem:helper,lem:bounded,lem:continuity}
+\end{itemize}
+
+\subsection{Mixed Mathematical Environment References}
+
+We can reference different mathematical environments together:
+\begin{itemize}
+\item Theorem and lemma: \Cref{thm:fundamental,lem:helper}
+\item Multiple mixed: \Cref{thm:fundamental,thm:completeness,lem:helper,lem:bounded}
+\item With definition: \Cref{thm:fundamental,lem:helper,def:cauchy}
+\end{itemize}
+
+\section{Command Reference}
+
+For practical use, here are the essential \texttt{cleveref} commands and their syntax:
+
+\subsection{Basic Commands}
+
+\begin{verbatim}
+% Single reference
+\Cref{label}              % "Theorem 1"
+\cref{label}              % "theorem 1" (lowercase)
+
+% Multiple references (same type)
+\Cref{label1,label2}      % "Theorems 1 and 2"
+\Cref{label1,label2,label3} % "Theorems 1, 2, and 3"
+
+% Mixed type references
+\Cref{thm:1,lem:1,def:1}  % "Theorem 1, Lemma 1, and Definition 1"
+\end{verbatim}
+
+\subsection{Range References}
+
+\begin{verbatim}
+% Consecutive references
+\crefrange{label1}{label3}  % "theorems 1 to 3"
+\Crefrange{label1}{label3}  % "Theorems 1 to 3"
+\end{verbatim}
+
+\subsection{Customization}
+
+\begin{verbatim}
+% At start references (beginning of sentence)
+\Cref{label}              % Always capitalized
+
+% Mid-sentence references  
+\cref{label}              % Lowercase version
+\end{verbatim}
+
+\subsection{Special Cases}
+
+\begin{verbatim}
+% Subequations
+\Cref{eq:system}          % References entire system
+\Cref{eq:system-a}        % References individual part
+
+% Page references (if needed)
+\cpageref{label}          % "page 1"
+\Cpageref{label}          % "Page 1"
+\end{verbatim}
+
+\section{Float References}
+
+\subsection{Tables}
+
+\begin{table}[htbp]
+\centering
+\caption{Comparison of convergence rates}
+\label{tab:convergence}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Method & Rate & Iterations \\
+\midrule
+Newton's & Quadratic & 5 \\
+Bisection & Linear & 20 \\
+Secant & Superlinear & 8 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Function properties}
+\label{tab:functions}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Function & Continuous & Differentiable & Integrable \\
+\midrule
+$x^2$ & Yes & Yes & Yes \\
+$|x|$ & Yes & No & Yes \\
+$\lfloor x \rfloor$ & No & No & Yes \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table references:
+\begin{itemize}
+\item Single table: \Cref{tab:convergence}
+\item Multiple tables: \Cref{tab:convergence,tab:functions}
+\end{itemize}
+
+\subsection{Figures}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\draw[->] (-2,0) -- (2,0) node[right] {$x$};
+\draw[->] (0,-1) -- (0,2) node[above] {$y$};
+\draw[blue, thick] (-1.5,1.125) parabola bend (0,0) (1.5,1.125);
+\node[below] at (0,0) {$0$};
+\end{tikzpicture}
+\caption{Graph of $y = x^2$}
+\label{fig:parabola}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\draw[->] (-2,0) -- (2,0) node[right] {$x$};
+\draw[->] (0,-2) -- (0,2) node[above] {$y$};
+\draw[red, thick] (-1.5,-1.5) -- (1.5,1.5);
+\node[below] at (0,0) {$0$};
+\end{tikzpicture}
+\caption{Graph of $y = x$}
+\label{fig:linear}
+\end{figure}
+
+Figure references:
+\begin{itemize}
+\item Single figure: \Cref{fig:parabola}
+\item Multiple figures: \Cref{fig:parabola,fig:linear}
+\end{itemize}
+
+\subsection{Mixed Float References}
+
+We can also mix different float types:
+\begin{itemize}
+\item Table and figure: \Cref{tab:convergence,fig:parabola}
+\item Multiple mixed: \Cref{tab:convergence,tab:functions,fig:parabola,fig:linear}
+\end{itemize}
+
+\section{Range References}
+
+Cleveref also supports range references using \texttt{\textbackslash crefrange}:
+
+\begin{theorem}\label{thm:first-range}
+First theorem in range.
+\end{theorem}
+
+\begin{theorem}\label{thm:second-range}
+Second theorem in range.
+\end{theorem}
+
+\begin{theorem}\label{thm:third-range}
+Third theorem in range.
+\end{theorem}
+
+We can reference ranges: \crefrange{thm:first-range}{thm:third-range} covers all three results.
+
+\section{Conclusion}
+
+This document demonstrates \texttt{cleveref}'s capabilities:
+\begin{enumerate}
+\item Automatic formatting for single and multiple references
+\item Smart handling of mixed reference types  
+\item Proper formatting of floats (tables and figures)
+\item Range references for consecutive items
+\item Command reference for practical use
+\end{enumerate}
+
+The combination of your paper style with \texttt{cleveref} provides a robust cross-referencing system that scales well from simple single references to mathematical environment combinations like \Cref{thm:fundamental,lem:helper}.
+
+Key advantages of using \texttt{cleveref}:
+\begin{itemize}
+\item Reduces manual typing and formatting errors
+\item Maintains consistency across the document
+\item Automatically handles pluralization and punctuation
+\item Works seamlessly with your paper style's theorem environments
+\item Provides both capitalized (\texttt{\textbackslash Cref}) and lowercase (\texttt{\textbackslash cref}) variants
+\end{itemize}
+
+This document serves as both a demonstration and a quick reference for using \texttt{cleveref} effectively with your academic paper template.
+
+\end{document}
