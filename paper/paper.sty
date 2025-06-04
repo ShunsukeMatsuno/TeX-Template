@@ -12,12 +12,11 @@
 \RequirePackage{polyglossia}
 \setdefaultlanguage{english}
 \setotherlanguage{latin}
-\setotherlanguage{hindi} 
-\newfontfamily\hindifont[Script=Devanagari]{Noto Serif Devanagari}
 
 %%%% Fonts %%%%
 \RequirePackage{fontspec}
 \RequirePackage{mathtools}     % load before unicode-math
+\mathtoolsset{showonlyrefs=true,showmanualtags=true}    % show equation number only if it is referenced
 \RequirePackage{unicode-math}
 \setmainfont{Libertinus Serif}
 \setmathfont{Libertinus Math}   % Matching math font
@@ -59,7 +58,7 @@
 %%%% Margin %%%%
 \RequirePackage{geometry}
 \geometry{left=25mm,right=25mm,top=30mm,bottom=30mm}
-\setlength{\skip\footins}{1cm}
+\setlength{\skip\footins}{2em}    % space betweeen footnoline horizontal line and main text
 
 %%%% Title %%%%
 \RequirePackage{titling}
@@ -151,7 +150,6 @@
 \RequirePackage{threeparttable}
 \RequirePackage{graphicx}
 
-
 %%%%%%%%%%%%%%%%%%%%%
 %% Editting Features
 %%%%%%%%%%%%%%%%%%%%% 
@@ -163,6 +161,10 @@
     { \textbf{\textcolor{red}{[TODO: #1]}}\ignorespaces}   % else (not blank)
 }
 \RequirePackage{marginnote}    % note in margin
+
+\usepackage{comment}
+\excludecomment{hide}   % \being{hide} ... \end{hide} will not be printed
+
 
 %%%%%%%%%%%%%%%%%%%%%
 %% Quote
@@ -194,6 +196,7 @@
 %%%%%%%%%%%%%%%%%%%%% 
 \RequirePackage{lipsum}
 \RequirePackage{ifthen}
+\RequirePackage{xparse}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%% Math %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -203,10 +206,10 @@
 %% Basics
 %%%%%%%%%%%%%%%%%%%%% 
 \RequirePackage{amsmath}
-\mathtoolsset{showonlyrefs=true}    % show equation number only if it is referenced
 \RequirePackage{amsthm} 
 \RequirePackage{thmtools} 
 \RequirePackage{bm}   % vector
+\RequirePackage{leftindex}   
 
 %%%%%%%%%%%%%%%%%%%%%
 %% Math Macro
@@ -233,8 +236,7 @@
 
 % Environments that share the 'theorem' counter (e.g., Theorem 1, Criterion 2)
 \declaretheorem[name=Criterion, sibling=theorem]{criterion}
-\declaretheorem[name=Notation, sibling=theorem]{notation}
-\declaretheorem[name=Problem, sibling=theorem]{problem}
+
 
 % Independently numbered sequential environments (e.g., Lemma 1, Lemma 2)
 \declaretheorem[name=Assumption]{assumption}
@@ -245,13 +247,14 @@
 \declaretheorem[name=Conclusion]{conclusion}
 \declaretheorem[name=Condition]{condition}
 \declaretheorem[name=Conjecture]{conjecture}
-\declaretheorem[name=Corollary]{corollary} % Will be Corollary 1, Corollary 2
+\declaretheorem[name=Corollary]{corollary} 
 \declaretheorem[name=Exercise]{exercise}
-\declaretheorem[name=Lemma]{lemma}         % Will be Lemma 1, Lemma 2
-\declaretheorem[name=Proposition]{proposition} % Will be Proposition 1, Proposition 2
+\declaretheorem[name=Lemma]{lemma}
+\declaretheorem[name=Proposition]{proposition} 
 
 % Environments with 'definition' style (sequentially numbered)
 \declaretheorem[name=Definition, style=definition]{definition}
+\declaretheorem[name=Observation, style=definition]{observation}  
 \declaretheorem[name=Remark, style=definition]{remark}
 \declaretheorem[name=Example, style=definition]{example}
 
