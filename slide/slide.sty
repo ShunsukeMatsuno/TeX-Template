@@ -8,16 +8,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%% Fonts %%%%%
-\usepackage{mlmodern}  % Bold Computer Modern
-\usefonttheme{professionalfonts}
-\setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
-\DeclareFontFamily{OMX}{mlmex}{}
-\DeclareFontShape{OMX}{mlmex}{m}{n}{%
-   <->mlmex10%
-   }{} 
+\usefonttheme{professionalfonts}   % tells Beamer to stop those internal replacements and simply use your fonts as-is
+
+\RequirePackage{unicode-math}
+\RequirePackage{fontspec}
+% \setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
+\setsansfont{Libertinus Sans}[Scale=1.1]
+\setmathfont{Libertinus Math}
+\setmathfont{NewCMMath-Regular.otf}[range=cal]
+\usepackage{esint}
 
 %%%% Colors %%%%%
-\usepackage{xcolor}
+\RequirePackage{xcolor}
 \usecolortheme{orchid}
 
 % new colors
@@ -38,6 +40,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%  Modifying the Theme  %%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamercolor{normal text}{fg=black!70!gray}
 \setbeamertemplate{progress bar in head/foot}{}
 \setbeamercolor{progress bar}{fg=lblue,bg=lblue}
 \setbeamercolor{frametitle}{fg=lblue,bg=lblue!20}
