@@ -9,7 +9,7 @@
 
 %%%% Fonts %%%%%
 \usefonttheme{professionalfonts}   % tells Beamer to stop those internal replacements and simply use your fonts as-is
-
+\RequirePackage{mathtools}   % load before unicode-math
 \RequirePackage{unicode-math}
 \RequirePackage{fontspec}
 % \setsansfont[BoldFont={Fira Sans SemiBold}]{Fira Sans Book}
@@ -63,12 +63,10 @@
 \setbeamercolor{itemize subitem}{fg=cyan!50}
 \setbeamercolor{itemize subsubitem}{fg=cyan!50}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%  Miscs  %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{lipsum}
-
 
 % hyper ref
 \usepackage{hyperref} 
@@ -118,15 +116,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%% Basic Packages %%%%
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{mathtools}
 \mathtoolsset{showonlyrefs=true}    % show equation number only if it is referenced
 \usepackage{amsthm} 
-\usepackage{amsfonts}
-\usepackage{bm}   % vector
-\usepackage{bbm}   % indicator function
+\usepackage{bm}   % optional
 
 
 % Macros
