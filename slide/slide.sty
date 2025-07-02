@@ -18,6 +18,8 @@
 \setmathfont{NewCMMath-Regular.otf}[range=cal]
 \usepackage{esint}
 
+\usepackage{emoji}
+
 %%%% Colors %%%%%
 \RequirePackage{xcolor}
 \usecolortheme{orchid}
@@ -110,6 +112,9 @@
 \AfterEndEnvironment{itemize}{\fix@beamer@open}
 \makeatother
 
+% Hide parts
+\usepackage{comment}
+\excludecomment{hide}   % \being{hide} ... \end{hide} will not be printed
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%  Math  %%%%%%%%%%%%%%%%%%%%%%
@@ -127,7 +132,7 @@
 \newcommand{\oo}{\mathcal{O}}
 \newcommand{\U}{\mathcal{U}}
 \newcommand{\R}{\mathbb{R}}
-\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\prob}{\mathbb{P}}
 \newcommand{\argmin}{\mathop{\rm arg~min}\limits}
 \newcommand{\argmax}{\mathop{\rm arg~max}\limits}
 
