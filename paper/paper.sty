@@ -247,6 +247,9 @@
 \newcommand{\argmax}{\mathop{\rm arg~max}\limits}
 \newcommand\setItemnumber[1]{\setcounter{enumi}{\numexpr#1-1\relax}}
 
+% qed
+\newcommand{\halmos}{\rule{0.3em}{0.5em}}
+
 %%%% theorem macro %%%%
 \declaretheorem[name=Theorem]{theorem} % Main counter, sequential
 
@@ -273,7 +276,10 @@
 \declaretheorem[name=Observation, style=definition]{observation}  
 \declaretheorem[name=Remark, style=definition]{remark}
 \declaretheorem[name=Example, style=definition]{example}
-
+\AtBeginEnvironment{example}{%
+  \renewcommand{\qedsymbol}{\halmos}%
+}
+\AtEndEnvironment{example}{\qed}
 % Reference names
 % \crefname{assumption}{assumption}{assumptions}
 % \Crefname{assumption}{Assumption}{Assumptions}
