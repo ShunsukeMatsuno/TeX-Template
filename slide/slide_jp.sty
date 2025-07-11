@@ -11,12 +11,12 @@
 \usefonttheme{professionalfonts}
 
 % 欧文フォント
-\usepackage[no-math]{fontspec}
+\RequirePackage[no-math]{fontspec}
 \setmainfont{TeX Gyre Termes}
 \setsansfont{TeX Gyre Heros}
 
 % 日本語フォント設定
-\usepackage{luatexja-fontspec}
+\RequirePackage{luatexja-fontspec}
 \setmainjfont[BoldFont=IPAexGothic]{IPAexMincho}  % 明朝体（スライドでは使わない）
 \setsansjfont[BoldFont={Harano Aji Gothic Bold}]{IPAexGothic}  % （ゴシック）
 % \setsansjfont{Harano Aji Gothic}  % 原ノ味フォント
@@ -26,7 +26,7 @@
 \renewcommand{\kanjifamilydefault}{\gtdefault}   % 日本語をゴシックに
 
 %%%% Colors %%%%%
-\usepackage{xcolor}
+\RequirePackage{xcolor}
 \usecolortheme{orchid}
 
 % new colors
@@ -73,11 +73,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%  Miscs  %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{lipsum}
+\RequirePackage{lipsum}
 
 
 % hyper ref
-\usepackage{hyperref} 
+\RequirePackage{hyperref} 
 \hypersetup{
     colorlinks=true,
     linkcolor=black,
@@ -87,19 +87,19 @@
 \newcommand{\changeurlcolor}[1]{\hypersetup{urlcolor=#1}} 
 
 % Underline
-\usepackage{ulem}
+\RequirePackage{ulem}
 \newcommand\ulblue{\bgroup\markoverwith
 {\textcolor{lblue}{\rule[-0.5ex]{2pt}{0.4pt}}}\ULon}
 
 % tikz
-\usepackage{tikz}
-\usepackage{standalone}
+\RequirePackage{tikz}
+\RequirePackage{standalone}
 
 % table
-\usepackage{wrapfig}
+\RequirePackage{wrapfig}
 
 % frame
-\usepackage{mdframed}
+\RequirePackage{mdframed}
 
 % Transparent overlay
 \setbeamercovered{still covered={\opaqueness<1->{15}},again covered={\opaqueness<1->{60}}}
@@ -124,15 +124,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%% Basic Packages %%%%
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{mathtools}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{mathtools}
 \mathtoolsset{showonlyrefs=true}    % show equation number only if it is referenced
-\usepackage{amsthm} 
-\usepackage{amsfonts}
-\usepackage{bm}   % vector
-\usepackage{bbm}   % indicator function
+\RequirePackage{amsthm} 
+\RequirePackage{amsfonts}
+\RequirePackage{bm}   % vector
+\RequirePackage{bbm}   % indicator function
 
 
 % Macros

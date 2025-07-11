@@ -3,9 +3,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % doc
-\usepackage[onehalfspacing]{setspace}   % ! `onehalfspacing` or 'doublespacing'
-\usepackage{parskip}
-\usepackage{geometry}
+\RequirePackage[onehalfspacing]{setspace}   % ! `onehalfspacing` or 'doublespacing'
+\RequirePackage{parskip}
+\RequirePackage{geometry}
 
 % margin
 % \geometry{left=50mm,right=25mm,top=30mm,bottom=30mm}
@@ -19,17 +19,17 @@ marginparwidth=3cm, marginparsep=5mm}
 \newcommand\slide{\stepcounter{slide} Slide \theslide}
 
 % note
-\usepackage{marginnote}    % note in margin
+\RequirePackage{marginnote}    % note in margin
 \reversemarginpar
 \newcommand{\slidenote}[1]{\marginnote{\blue{\slide} \\ \textcolor{gray}{#1}}[.32cm]}
 
 
 % color
-\usepackage{xcolor}
+\RequirePackage{xcolor}
 \definecolor{lblue}{RGB}{0, 114, 206}
 \newcommand{\bb}[1]{\textbf{\textcolor{lblue}{#1}}}
 \newcommand{\blue}[1]{\textcolor{lblue}{#1}}
 \newcommand{\red}[1]{\textbf{\textcolor{red}{#1}}}
 
 % misc
-\usepackage{lipsum}
+\RequirePackage{lipsum}

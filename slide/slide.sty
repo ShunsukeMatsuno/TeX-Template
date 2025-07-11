@@ -16,9 +16,9 @@
 \setsansfont{Libertinus Sans}[Scale=1.1]
 \setmathfont{Libertinus Math}
 \setmathfont{NewCMMath-Regular.otf}[range=cal]
-\usepackage{esint}
+\RequirePackage{esint}
 
-\usepackage{emoji}
+\RequirePackage{emoji}
 
 %%%% Colors %%%%%
 \RequirePackage{xcolor}
@@ -68,10 +68,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%  Miscs  %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{lipsum}
+\RequirePackage{lipsum}
 
 % hyper ref
-\usepackage{hyperref} 
+\RequirePackage{hyperref} 
 \hypersetup{
     colorlinks=true,
     linkcolor=black,
@@ -81,19 +81,19 @@
 \newcommand{\changeurlcolor}[1]{\hypersetup{urlcolor=#1}} 
 
 % Underline
-\usepackage{ulem}
+\RequirePackage{ulem}
 \newcommand\ulblue{\bgroup\markoverwith
 {\textcolor{lblue}{\rule[-0.5ex]{2pt}{0.4pt}}}\ULon}
 
 % tikz
-\usepackage{tikz}
-\usepackage{standalone}
+\RequirePackage{tikz}
+\RequirePackage{standalone}
 
 % table
-\usepackage{wrapfig}
+\RequirePackage{wrapfig}
 
 % frame
-\usepackage{mdframed}
+\RequirePackage{mdframed}
 
 % Transparent overlay
 \setbeamercovered{still covered={\opaqueness<1->{15}},again covered={\opaqueness<1->{60}}}
@@ -113,7 +113,7 @@
 \makeatother
 
 % Hide parts
-\usepackage{comment}
+\RequirePackage{comment}
 \excludecomment{hide}   % \being{hide} ... \end{hide} will not be printed
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -122,8 +122,8 @@
 
 %%%% Basic Packages %%%%
 \mathtoolsset{showonlyrefs=true}    % show equation number only if it is referenced
-\usepackage{amsthm} 
-\usepackage{bm}   % optional
+\RequirePackage{amsthm} 
+\RequirePackage{bm}   % optional
 
 
 % Macros

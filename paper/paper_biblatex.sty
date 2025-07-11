@@ -9,9 +9,9 @@
 %%%%%%%%%%%%%%%%%%%%%
 
 %%%% Fonts %%%%
-\usepackage{fontspec}
-\usepackage{mathtools}     % load before unicode-math
-\usepackage{polyglossia}
+\RequirePackage{fontspec}
+\RequirePackage{mathtools}     % load before unicode-math
+\RequirePackage{polyglossia}
 % \usepackage{unicode-math}
 % \setmainfont{Libertinus Serif}
 % \setmathfont{Libertinus Math}   % Matching math font
@@ -50,12 +50,12 @@
 \setcounter{secnumdepth}{2}
 
 %%%% Margin %%%%
-\usepackage{geometry}
+\RequirePackage{geometry}
 \geometry{left=25mm,right=25mm,top=30mm,bottom=30mm}
 \setlength{\skip\footins}{1cm}
 
 %%%% Title %%%%
-\usepackage{titling}
+\RequirePackage{titling}
 
 % Footnote for acknowledgement 
 \newcommand\blfootnote[1]{%
@@ -70,7 +70,7 @@
 \parindent=30pt
 
 %%%% Color %%%%
-\usepackage{xcolor}
+\RequirePackage{xcolor}
 
 % Original colors
 \definecolor{lblue}{RGB}{0, 114, 206}
@@ -79,7 +79,7 @@
 \definecolor{lgreen}{RGB}{47, 139, 89}
 
 %%%% Hyper ref %%%%
-\usepackage[pdfencoding=auto,psdextra,pdfusetitle]{hyperref} 
+\RequirePackage[pdfencoding=auto,psdextra,pdfusetitle]{hyperref} 
 \hypersetup{
     colorlinks=true,
     linkcolor=lgreen,
@@ -91,16 +91,16 @@
   \let\thanks\@gobble
 }
 %%%% Enumerate (adjust space) %%%%
-\usepackage{enumitem}
+\RequirePackage{enumitem}
 \setlist{nosep}    % To remove the vertical space altogether in all lists
 
 %%%% Footnote with line break in the editor %%%%
 % https://tex.stackexchange.com/questions/94563/new-line-for-footnote-without-blank-space
-\usepackage{xpatch}
+\RequirePackage{xpatch}
 \xpretocmd{\footnote}{\unskip}{}{}
 
 %%%% Appendix %%%%
-\usepackage{apptools}
+\RequirePackage{apptools}
 \AtAppendix{\counterwithin{lemma}{section}}
 \AtAppendix{\counterwithin{remark}{section}}
 \AtAppendix{\counterwithin{theorem}{section}}
@@ -108,26 +108,26 @@
 %%%%%%%%%%%%%%%%%%%%%
 %% Multifiles
 %%%%%%%%%%%%%%%%%%%%%
-\usepackage[subpreambles=true]{standalone}
-\usepackage{import}
+\RequirePackage[subpreambles=true]{standalone}
+\RequirePackage{import}
 
 %%%%%%%%%%%%%%%%%%%%%
 %% tikz
 %%%%%%%%%%%%%%%%%%%%% 
-\usepackage{tikz}
+\RequirePackage{tikz}
 
 %%%%%%%%%%%%%%%%%%%%%
 %% Float
 %%%%%%%%%%%%%%%%%%%%% 
-\usepackage{caption}   % See https://tex.stackexchange.com/questions/58674/the-space-between-the-table-and-its-caption-is-very-small
-\usepackage{floatrow}
+\RequirePackage{caption}   % See https://tex.stackexchange.com/questions/58674/the-space-between-the-table-and-its-caption-is-very-small
+\RequirePackage{floatrow}
 \floatsetup{capposition=top}
-\usepackage{booktabs}
-\usepackage{tabulary}
-\usepackage{tabularx}
-\usepackage{wrapfig}
-\usepackage{threeparttable}
-\usepackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage{tabulary}
+\RequirePackage{tabularx}
+\RequirePackage{wrapfig}
+\RequirePackage{threeparttable}
+\RequirePackage{graphicx}
 
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -140,14 +140,14 @@
     { \textbf{\textcolor{red}{[TODO]}} }   % if #1 == blank
     { \textbf{\textcolor{red}{[TODO: #1]}} }   % else (not blank)
 }
-\usepackage{marginnote}    % note in margin
+\RequirePackage{marginnote}    % note in margin
 
 %%%%%%%%%%%%%%%%%%%%%
 %% Quote
 %%%%%%%%%%%%%%%%%%%%%
-\usepackage{epigraph}
-\usepackage{etoolbox}
-\usepackage{calc}
+\RequirePackage{epigraph}
+\RequirePackage{etoolbox}
+\RequirePackage{calc}
 \renewcommand{\epigraphsize}{\normalsize}
 
 % % normal epigraph
@@ -176,8 +176,8 @@
 %%%%%%%%%%%%%%%%%%%%%
 %% Misc
 %%%%%%%%%%%%%%%%%%%%% 
-\usepackage{lipsum}
-\usepackage{ifthen}
+\RequirePackage{lipsum}
+\RequirePackage{ifthen}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%% Math %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -186,12 +186,12 @@
 %%%%%%%%%%%%%%%%%%%%%
 %% Basics
 %%%%%%%%%%%%%%%%%%%%% 
-\usepackage{amsmath}
+\RequirePackage{amsmath}
 \usepackage{mathtools}
 \mathtoolsset{showonlyrefs=true}    % show equation number only if it is referenced
-\usepackage{amsthm} 
-\usepackage{amsfonts}
-\usepackage{bm}   % vector
+\RequirePackage{amsthm} 
+\RequirePackage{amsfonts}
+\RequirePackage{bm}   % vector
 
 %%%%%%%%%%%%%%%%%%%%%
 %% Math Macro
