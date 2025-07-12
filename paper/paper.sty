@@ -250,12 +250,20 @@
 % qed
 \newcommand{\halmos}{\rule{0.3em}{0.5em}}
 
+%%%% Proof env patch %%%$
+% Proof environment is defined in amsthm, but it does not work well with tagging. It adds horizontal space before the proof name. Here is a fix.
+\makeatletter
+\renewenvironment{proof}[1][\proofname]
+  {\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax
+   \trivlist\item[\hskip\labelsep\itshape#1\@addpunct{.}]\mbox{}}
+  {\popQED\endtrivlist\@endpefalse}
+\makeatother
+
 %%%% theorem macro %%%%
 \declaretheorem[name=Theorem]{theorem} % Main counter, sequential
 
 % Environments that share the 'theorem' counter (e.g., Theorem 1, Criterion 2)
 \declaretheorem[name=Criterion, sibling=theorem]{criterion}
-
 
 % Independently numbered sequential environments (e.g., Lemma 1, Lemma 2)
 \declaretheorem[name=Assumption]{assumption}
