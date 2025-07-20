@@ -23,7 +23,7 @@
 \setmathfont{NewCMMath-Regular.otf}[range={"007F,"0900-"097F,"2038,"203F-"2041,"2043,"2045-"2046,"204C-"204E,"2050-"2051,"2053-"2056,"2058-"205E,"20E7,"2104,"2108,"2114,"211F,"2121,"2123,"2125,"2129,"2132,"213A-"213B,"2141-"2144,"214A-"214E,"22B0-"22B1,"22D4,"22F2-"22FF,"2301,"2304,"2307,"230C-"230F,"2311-"2318,"231A-"231B,"2324-"2325,"2328,"232C-"237C,"237E-"237F,"2381-"239A,"23B6,"23B8-"23CF,"23D1-"23D2,"23D4-"23DB,"23E2-"23FF,"2501,"2503-"250B,"250D-"250F,"2511-"2513,"2515-"2517,"2519-"251B,"251D-"2523,"2525-"252B,"252D-"2533,"2535-"253B,"253D-"2580,"2582-"2587,"2589-"2590,"2594-"259F,"25A2-"25A9,"25AE-"25B1,"25B4-"25B5,"25B8-"25BB,"25BE-"25BF,"25C2-"25C5,"25C8,"25CC-"25CD,"25D8-"25E5,"25E7-"25EE,"25F0-"2600,"2606,"2612,"2621,"267E,"2680-"2689,"26AA-"26AB,"26B2,"2726,"272A,"2736,"273D,"275A,"2772-"2773,"279B,"27C0-"27C1,"27C3-"27D7,"27DF,"27E4-"27E5,"27F0-"27F1,"2900-"2901,"2905,"2908-"2909,"290C-"2970,"2976-"2981,"2983-"2986,"2989-"29B8,"29BB-"29F4,"29F8-"29FB,"29FE-"29FF,"2A07-"2A08,"2A0A-"2A0B,"2A0D-"2A10,"2A12-"2A2E,"2A30-"2A35,"2A37-"2A3D,"2A40-"2A7C,"2A7F-"2A84,"2A8D-"2A94,"2A97-"2AAE,"2AB7-"2B03,"2B08-"2B0B,"2B0E-"2B19,"2B1B-"2B2F,"2B32,"2B34-"2B73,"2B76-"2B95,"2B97-"2BFF,"3012,"3030,"E000-"E03D,"E041-"E072,"E376-"E377,"E395,"E397-"E39B,"E3D3,"EA57}, Scale=MatchUppercase]
 \setmathfont{NewCMMath-Regular.otf}[range=cal]
 \RequirePackage{esint}
-\RequirePackage{microtype}    % better spacing
+\RequirePackage{microtype}    % better spacing; use [babel=true] option if polyglossia is used for non-English languages
 
 
 %%%%% Fall back options (unload unicode-math)
@@ -261,14 +261,14 @@
 \newcommand{\EE}{\mathcal{E}}
 \newcommand{\NN}{\mathcal{N}}
 
-% others
+% math expression
 \newcommand{\prob}{\mathbb{P}}
 \newcommand{\argmin}{\mathop{\rm arg~min}\limits}
 \newcommand{\argmax}{\mathop{\rm arg~max}\limits}
-\newcommand\setItemnumber[1]{\setcounter{enumi}{\numexpr#1-1\relax}}
 
-% qed
-\newcommand{\halmos}{\rule{0.3em}{0.5em}}
+% \setItemnumber{n} sets the item number of the current list to n.
+% This is useful for resuming the item number in a list.
+\newcommand\setItemnumber[1]{\setcounter{enumi}{\numexpr#1-1\relax}}
 
 %%%% Proof env patch %%%$
 % Proof environment is defined in amsthm, but it does not work well with tagging. It adds horizontal space before the proof name. Here is a fix.
@@ -287,7 +287,8 @@
 \makeatother
 
 %%%% theorem macro %%%%
-\declaretheorem[name=Theorem]{theorem} % Main counter, sequential
+% Main counter, sequential
+\declaretheorem[name=Theorem]{theorem} 
 
 % Environments that share the 'theorem' counter (e.g., Theorem 1, Criterion 2)
 \declaretheorem[name=Criterion, sibling=theorem]{criterion}
@@ -311,10 +312,6 @@
 \declaretheorem[name=Observation, style=definition]{observation}  
 \declaretheorem[name=Remark, style=definition]{remark}
 \declaretheorem[name=Example, style=definition]{example}
-\AtBeginEnvironment{example}{%
-  \renewcommand{\qedsymbol}{\halmos}%
-}
-\AtEndEnvironment{example}{\qed}
 
 % Reference names
 \zcRefTypeSetup{assumption}{
@@ -324,3 +321,22 @@
   Name-pl=Assumptions
 }
 
+% qed adjustment in Environments
+% ∎: Halmos's tombstone
+% I use this when I wan to mark the end of a paragraph in a non-proof environment (e.g., remark, example).
+% Type \halmos at the end of an environment or paragraph as an alternative to \qed.
+% \newcommand{\halmos}{\rule{0.3em}{0.5em}}
+\newcommand{\halmossymbol}{\rule{0.3em}{0.5em}}
+\newcommand{\halmos}{%
+   % Mimic the \qed command from amsthm package
+  \begingroup
+  \let\qedsymbol\halmossymbol
+  \qed
+  \endgroup
+}
+
+% For the example environment, automatically add the halmos symbol at the end of the environment.
+\AtBeginEnvironment{example}{%
+  \renewcommand{\qedsymbol}{\halmos}%
+}
+\AtEndEnvironment{example}{\qed}
