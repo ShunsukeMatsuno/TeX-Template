@@ -99,7 +99,7 @@
 %%%% Paragraph %%%%
 % See Ttile section above for spacing in the title page.
 % Chicago Manual says 0.5in indent and no vertical space between paragraphs.
-% skip=0.1pt is a hacky way; if it is 0pt, then list separation has too much space.
+% if skip>0pt, then the parskip overrides the list spacing, which I override further below.
 \RequirePackage[indent=0.5in,skip=0.1pt]{parskip}   
 % \RequirePackage[indent=0pt]{parskip}    % Use no indent + vertical space between paragraphs.
 
@@ -112,10 +112,12 @@
 % ! This option does not work with tagging as of July 2025.
 % \setlist{nosep}    % To remove the vertical space altogether in all lists
 
-% Alternative: Patch topsep, which is set by zero by parskip package.
-%              See the source code of the parskip package, which overrides@listI.
+% Workaround: Patch topsep, which is set by zero by parskip package.
+%             See the source code of the parskip package, which overrides@listI.
 \makeatletter
 \patchcmd{\@listI}{\topsep\z@}{\topsep 5pt plus 2pt minus 2pt}{}{}
+\patchcmd{\@listI}{\itemsep\z@}{\itemsep 4pt plus 0.5pt minus 0.5pt}{}{}
+\patchcmd{\@listii}{\itemsep\z@}{\itemsep 2pt plus 0.5pt minus 0.5pt}{}{}
 \makeatother
 
 % paragraph list
