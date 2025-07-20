@@ -97,7 +97,11 @@
 %\setlength{\cftsubsubsecindent}{5em}
 
 %%%% Paragraph %%%%
-\RequirePackage[indent=30pt,skip=5pt plus1pt]{parskip}   % See Ttile section above for spacing in the title page.
+% See Ttile section above for spacing in the title page.
+% Chicago Manual says 0.5in indent and no vertical space between paragraphs.
+% skip=0.1pt is a hacky way; if it is 0pt, then list separation has too much space.
+\RequirePackage[indent=0.5in,skip=0.1pt]{parskip}   
+% \RequirePackage[indent=0pt]{parskip}    % Use no indent + vertical space between paragraphs.
 
 % ! DON'T DO THIS!! This changes spacing in list environments too.
 % \parskip=5pt plus 1pt
@@ -244,6 +248,16 @@
 \RequirePackage{thmtools}       % Better theorem environment management
 \RequirePackage{bracealign}     % Align braces
 \RequirePackage{leftindex}      % For using left subscript
+
+% This should come AFTER amsmath and amsthm.
+% amsmath package defines preskip and postskip as \parskip, which is zeroed by the parskip package.
+% This causes theorems to have no vertical space before and after.
+% To fix this, we redefine theorems to have a small vertical space.
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=.5\baselineskip plus 2pt \thm@postskip=.5\baselineskip plus 2pt
+}
+\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%
 %% Math Macro
