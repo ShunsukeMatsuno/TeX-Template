@@ -336,7 +336,4 @@
 }
 
 % For the example environment, automatically add the halmos symbol at the end of the environment.
-\AtBeginEnvironment{example}{%
-  \renewcommand{\qedsymbol}{\halmos}%
-}
-\AtEndEnvironment{example}{\qed}
+\AtEndEnvironment{example}{\halmos}
