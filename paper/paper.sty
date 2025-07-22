@@ -107,7 +107,7 @@
 % \parskip=5pt plus 1pt
 % \parindent=30pt
 
-%%%% Enumerate %%%%
+%%%% Lists %%%%
 \RequirePackage{enumitem}
 % ! This option does not work with tagging as of July 2025.
 % \setlist{nosep}    % To remove the vertical space altogether in all lists
@@ -123,6 +123,29 @@
 % paragraph list
 \newlist{paralist}{enumerate}{1}
 \setlist[paralist,1]{label=\textparagraph\arabic*, left=2em, labelsep=0.5em}
+
+% add vertical space before the table and figure environment
+\AtBeginEnvironment{figure}{\addvspace{5mm}}
+\AtBeginEnvironment{table}{\addvspace{5mm}}
+
+%%%% Footnote with line break in the editor %%%%
+% https://tex.stackexchange.com/questions/94563/new-line-for-footnote-without-blank-space
+\RequirePackage{xpatch}
+\xpretocmd{\footnote}{\unskip}{}{}
+
+%%%% Appendix %%%%
+\RequirePackage{apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\AtAppendix{\counterwithin{corollary}{section}}
+\AtAppendix{\counterwithin{remark}{section}}
+\AtAppendix{\counterwithin{theorem}{section}}
+\AtAppendix{\counterwithin{proposition}{section}}
+
+\RequirePackage{appendix}    % for \appendixpage and \addappheadtotoc commands
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Colors and Additional Features
+%%%%%%%%%%%%%%%%%%%%%
 
 %%%% Color %%%%
 \RequirePackage{xcolor}
@@ -153,20 +176,9 @@
   \let\thanks\@gobble
 }
 
-%%%% Footnote with line break in the editor %%%%
-% https://tex.stackexchange.com/questions/94563/new-line-for-footnote-without-blank-space
-\RequirePackage{xpatch}
-\xpretocmd{\footnote}{\unskip}{}{}
-
-%%%% Appendix %%%%
-\RequirePackage{apptools}
-\AtAppendix{\counterwithin{lemma}{section}}
-\AtAppendix{\counterwithin{corollary}{section}}
-\AtAppendix{\counterwithin{remark}{section}}
-\AtAppendix{\counterwithin{theorem}{section}}
-\AtAppendix{\counterwithin{proposition}{section}}
-
-\RequirePackage{appendix}    % for \appendixpage and \addappheadtotoc commands
+%%%% Cross-referencing %%%%
+% Must be loaded after zref-clever
+\RequirePackage{zref-xr}     % use with \zexternaldocument[prefix]{location of .aux file}
 
 %%%%%%%%%%%%%%%%%%%%%
 %% Bibliography
@@ -197,9 +209,6 @@
 \RequirePackage{threeparttable}
 \RequirePackage{graphicx}
 
-% add vertical space before the table and figure environment
-\AtBeginEnvironment{figure}{\addvspace{5mm}}
-\AtBeginEnvironment{table}{\addvspace{5mm}}
 
 %%%%%%%%%%%%%%%%%%%%%
 %% Editting Features
