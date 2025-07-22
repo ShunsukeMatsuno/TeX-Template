@@ -284,14 +284,30 @@
 \RequirePackage{bracealign}     % Align braces
 \RequirePackage{leftindex}      % For using left subscript
 
+%%%%%%%%%%% patches %%%%%%%%%%%
 % This should come AFTER amsmath and amsthm.
 % amsmath package defines preskip and postskip as \parskip, which is zeroed by the parskip package.
 % This causes theorems to have no vertical space before and after.
 % To fix this, we redefine theorems to have a small vertical space.
 \makeatletter
+
 \def\thm@space@setup{%
   \thm@preskip=.5\baselineskip plus 2pt \thm@postskip=.5\baselineskip plus 2pt
 }
+
+% Proof environment is defined in amsthm, but it does not work well with tagging. It adds horizontal space before the proof name. Here is a fix.
+% https://github.com/latex3/tagging-project/issues/944#issuecomment-3056109265
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \itshape
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\par%\@endpefalse
+}
+
 \makeatother
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -317,21 +333,8 @@
 % This is useful for resuming the item number in a list.
 \newcommand\setItemnumber[1]{\setcounter{enumi}{\numexpr#1-1\relax}}
 
-%%%% Proof env patch %%%$
-% Proof environment is defined in amsthm, but it does not work well with tagging. It adds horizontal space before the proof name. Here is a fix.
-% https://github.com/latex3/tagging-project/issues/944#issuecomment-3056109265
-\makeatletter
-\renewenvironment{proof}[1][\proofname]{\par
-  \pushQED{\qed}%
-  \normalfont \topsep6\p@\@plus6\p@\relax
-  \trivlist
-  \item[\hskip\labelsep
-        \itshape
-    #1\@addpunct{.}]\ignorespaces
-}{%
-  \popQED\endtrivlist\par%\@endpefalse
-}
-\makeatother
+% Use this in he proof environment.
+\newcommand{\step}[1]{\medskip\noindent{\small\textbf{#1}}\,}
 
 %%%% theorem macro %%%%
 % Main counter, sequential
