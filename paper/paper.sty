@@ -178,7 +178,11 @@
 
 %%%% Cross-referencing %%%%
 % Must be loaded after zref-clever
-\RequirePackage{zref-xr}     % use with \zexternaldocument[prefix]{location of .aux file}
+% Add the following to the preamble:
+%    \externaldocument[prefix]{path/to/axu.tex}.
+%    \zexternaldocument[prefix]{path/to/axu.tex}
+\RequirePackage{xr}          % for \ref and \eqref
+\RequirePackage{zref-xr}     % for \zcrefaux file}
 
 %%%%%%%%%%%%%%%%%%%%%
 %% Bibliography
@@ -188,7 +192,7 @@
 %%%%%%%%%%%%%%%%%%%%%
 %% Multifiles
 %%%%%%%%%%%%%%%%%%%%%
-\RequirePackage[subpreambles=true]{standalone}
+\usepackage[subpreambles=true]{standalone}   % cannot do RequirePackage
 \RequirePackage{import}
 
 %%%%%%%%%%%%%%%%%%%%%
