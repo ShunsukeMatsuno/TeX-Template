@@ -197,19 +197,30 @@
 \RequirePackage{threeparttable}
 \RequirePackage{graphicx}
 
+% add vertical space before the table and figure environment
+\AtBeginEnvironment{figure}{\addvspace{5mm}}
+\AtBeginEnvironment{table}{\addvspace{5mm}}
+
 %%%%%%%%%%%%%%%%%%%%%
 %% Editting Features
 %%%%%%%%%%%%%%%%%%%%% 
 
-%%%% TODO %%%%
-\newcommand{\TODO}[1]{%
-\ifthenelse { \equal{#1}{}}  %if #1 is empty
-    { \textbf{\textcolor{red}{[TODO]}}\ignorespaces}   % if #1 == blank
-    { \textbf{\textcolor{red}{[TODO: #1]}}\ignorespaces}   % else (not blank)
+%%%% Todo command %%%%
+% Usage: "In Figure \TODO{}, I show that ..."
+%        "\TODO{This is a todo item.}"
+\RequirePackage{xspace}    % adds a space unless the macro is followed by certain punctuation
+\makeatletter
+\newcommand{\TODO}[1]{% 
+\ifthenelse{\equal{#1}{}}%  %if #1 is empty
+    {\textbf{\textcolor{red}{[TODO]}}\xspace}    % if #1 == blank
+    {\textbf{\textcolor{red}{[TODO: #1]}}\xspace}   % else (not blank)
 }
+\makeatother
+
 \RequirePackage{marginnote}    % note in margin
 
-\RequirePackage{comment}
+% comment
+\RequirePackage{comment}   
 \excludecomment{hide}   % \being{hide} ... \end{hide} will not be printed
 
 
