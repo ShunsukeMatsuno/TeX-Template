@@ -4,7 +4,6 @@ LaTeX original style sheets
 - `paper/paper.sty`: academic paper
 - `slide`: presentation slide
   - `./paper.sty`
-  - `./aea.bst`: from [AEA](https://www.aeaweb.org/journals/templates)  
 - `slide/script.sty`: presentation script
 
 # Installation 
@@ -17,7 +16,7 @@ Prerequisite: TeX Live 2025
 - Put the bst sheets in `TEXMFHOME/bibtex/bst/local`
 
 ## Using scripts
-On Windows, run this on `git bash`.
+On Linux or Windows with `git bash`.
 ```bash
 cd ~/Downloads    # optional
 git clone https://github.com/ShunsukeMatsuno/TeX-Template
@@ -25,3 +24,5 @@ cd Tex-Template
 sh ./install.sh
 ```
 After successful installation you can remove the cloned repo.
+
+Note WSL2 won't work unless you install texlive on wsl.
