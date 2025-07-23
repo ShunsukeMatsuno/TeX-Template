@@ -15,7 +15,7 @@ mkdir -p "$path_img"
 cp ./paper/*.sty "$path_sty"
 
 # Copy the BibTeX style file from the paper directory
-cp ./paper/aea.bst "$path_bst"
+cp ./paper/*.bst "$path_bst"
 
 # Copy all .sty files from the slide directory
 cp ./slide/*.sty "$path_sty"

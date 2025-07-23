@@ -304,6 +304,7 @@
   \item[\hskip\labelsep
         \itshape
     #1\@addpunct{.}]\ignorespaces
+    \setlength{\parindent}{\parskip@indent}  % use \parskip@indent to use indent set by parskip
 }{%
   \popQED\endtrivlist\par%\@endpefalse
 }
