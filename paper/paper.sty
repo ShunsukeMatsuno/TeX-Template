@@ -334,6 +334,13 @@
 \newcommand{\argmin}{\mathop{\rm arg~min}\limits}
 \newcommand{\argmax}{\mathop{\rm arg~max}\limits}
 
+% \Wtilde[<scale>]{<math>}
+% Example: $\Wtilde{\mathrm{X}}$
+% Example: $\Wtilde[1.5]{AB}$
+\newcommand{\Wtilde}[2][1]{%
+  \stackrel{\scalebox{#1}[1]{\sim}}{\smash{#2}\rule{0pt}{1.1ex}}%
+}
+
 % \setItemnumber{n} sets the item number of the current list to n.
 % This is useful for resuming the item number in a list.
 \newcommand\setItemnumber[1]{\setcounter{enumi}{\numexpr#1-1\relax}}
