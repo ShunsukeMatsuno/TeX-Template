@@ -1,0 +1,61 @@
+% originally by kylebutts (https://github.com/kylebutts/latex-templates/tree/main)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% Documents %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ProvidesPackage{referee-response}[template for referee response]
+
+
+%%%%%%%%%%%%%%%%%%%%% dependencies %%%%%%%%%%%%%%%%%%%%%%
+% Baseline style (simplified version of paper.sty)
+\input{referee-response-base.sty}
+
+\RequirePackage{tcolorbox}
+\definecolor{jet}{HTML}{131516}
+\newcommand\jet[1]{{\color{jet}#1}}
+\DeclareCaptionFont{jet}{\color{jet}}
+
+
+%%%%%%%%%%%%%%%%%%%%% main part %%%%%%%%%%%%%%%%%%%%%%%
+
+\tcbuselibrary{breakable, skins}
+\newtcolorbox{commentbox}{
+  blanker, breakable, left=1em,
+  top = 0.5em, bottom = 0.5em,
+  borderline west={2pt}{0pt}{jet}
+}
+
+\newcommand{\RefName}{}
+\newcommand{\RefAbbr}{}
+\newcounter{commentcount}
+\setcounter{commentcount}{1}
+\newenvironment{refcomment}{
+  \subsection{\RefAbbr \ Comment \thecommentcount}
+  \addtocounter{commentcount}{1}
+  \begin{commentbox}\color{jet}
+}{
+  \end{commentbox}
+}
+
+% Reset counter and create section
+\newcommand{\NewRef}[2]{
+    \renewcommand{\RefName}{#1}
+    \renewcommand{\RefAbbr}{#2}
+    \section{Responses to \RefName}
+    \setcounter{commentcount}{1}
+}
+
+% Styling sections
+\RequirePackage[explicit]{titlesec}
+\titleformat{\section}
+  {\large \bf}
+  {}
+  {0em}
+  {#1}
+  
+\titleformat{\subsection}
+  {\fontsize{12}{10}\it}
+  {}
+  {0em}
+  {#1}

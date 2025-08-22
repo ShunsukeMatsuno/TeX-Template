@@ -17,6 +17,9 @@ cp ./paper/*.sty "$path_sty"
 # Copy the BibTeX style file from the paper directory
 cp ./paper/*.bst "$path_bst"
 
+# Copy the referee response style
+cp ./referee/*.sty "$path_sty"
+
 # Copy all .sty files from the slide directory
 cp ./slide/*.sty "$path_sty"
 

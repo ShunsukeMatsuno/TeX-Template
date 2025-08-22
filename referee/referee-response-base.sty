@@ -1,0 +1,313 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is a simplified version of paper.sty
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Language %%%%
+\RequirePackage{polyglossia}
+\setdefaultlanguage{english}     % Note: the default is \frenchspacing
+\setotherlanguage{latin}
+
+%%%% Fonts %%%%
+\RequirePackage{fontspec}
+\RequirePackage{mathtools}     % load before unicode-math
+\RequirePackage{unicode-math}
+\setmainfont{Libertinus Serif}
+\setmathfont{Libertinus Math}   % Matching math font
+\setmathfont{NewCMMath-Regular.otf}[range=cal]
+\RequirePackage{esint}        % slanted integral symbols
+\RequirePackage{microtype}    % better spacing; use [babel=true] option if polyglossia is used for non-English languages
+
+
+%%%%% Fall back options (unload unicode-math)
+% \usepackage{Baskervaldx}
+% \usepackage[baskervaldx,varbb]{newtxmath}
+% \usepackage[cal=cm]{mathalfa} % mathcal from computer modern
+
+% \usepackage{libertine}
+% % \setmainfont{Libertinus Serif}
+% \usepackage[libertinus,varbb]{newtxmath}
+% \usepackage[cal=cm]{mathalfa} % mathcal from computer modern
+
+
+%%%% Line spacing %%%%
+\makeatletter
+%* \usepackage[onehalf]{paper} - onehalf spacing
+%* \usepackage[double]{paper}  - double spacing
+%* \usepackage{paper}          - single spacing
+\newif\if@onehalfoption\@onehalfoptionfalse
+\newif\if@doubleoption\@doubleoptionfalse
+\DeclareOption{onehalf}{\@onehalfoptiontrue}
+\DeclareOption{double}{\@doubleoptiontrue}
+\DeclareOption*{\OptionNotUsed}
+
+\ProcessOptions\relax
+
+\if@onehalfoption
+  \RequirePackage[onehalfspacing]{setspace}
+\else
+\if@doubleoption
+  \RequirePackage[doublespacing]{setspace}
+\else
+  \RequirePackage[singlespacing]{setspace}
+\fi
+\fi
+\makeatother
+
+%%%% Section numbering depth %%%%
+\setcounter{secnumdepth}{2}
+
+%%%% Margin %%%%
+\RequirePackage{geometry}
+\geometry{left=25mm,right=25mm,top=30mm,bottom=30mm}
+
+%%%% Footnote %%%%
+% The titleing package appears to affect the spacing of footnotes.
+% The footmisc package offers flexible footnote management.
+% This package is actively maintained as of 2025.
+\RequirePackage[bottom]{footmisc}
+\setlength{\skip\footins}{1.5em}    % space betweeen footnote horizontal line and main text
+
+%%%% Paragraph %%%%
+\RequirePackage[indent=0.5in,skip=0.1pt]{parskip}   
+
+%%%% Lists %%%%
+\RequirePackage{enumitem}
+
+%%%% Appendix %%%%
+\RequirePackage{apptools}
+\AtAppendix{\counterwithin{lemma}{section}}
+\AtAppendix{\counterwithin{corollary}{section}}
+\AtAppendix{\counterwithin{remark}{section}}
+\AtAppendix{\counterwithin{theorem}{section}}
+\AtAppendix{\counterwithin{proposition}{section}}
+
+\RequirePackage{appendix}    % for \appendixpage and \addappheadtotoc commands
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Colors and Additional Features
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% Color %%%%
+\RequirePackage{xcolor}
+
+% Original colors
+\definecolor{lblue}{RGB}{0, 114, 206}
+\definecolor{gray}{RGB}{111, 112, 112}
+\definecolor{orangered}{RGB}{255, 69, 0}
+\definecolor{darkgray}{RGB}{51, 51, 51}
+\definecolor{lgreen}{RGB}{47, 139, 89}
+
+%%%% Hyper ref %%%%
+\RequirePackage[pdfencoding=auto,psdextra,pdfusetitle]{hyperref} 
+\RequirePackage{zref-clever}
+\zcsetup{cap=true,nameinlink=false}
+\mathtoolsset{showonlyrefs=true,showmanualtags=true}    % Load after zref-clever
+\hypersetup{
+    colorlinks=true,
+    linkcolor=lgreen,
+    citecolor=lgreen,
+    filecolor=lgreen,      
+    urlcolor=lgreen
+}
+\pdfstringdefDisableCommands{%   % https://tex.stackexchange.com/questions/466229/hyperref-option-pdfusetitle-with-thanks
+  \let\thanks\@gobble
+}
+
+%%%% Cross-referencing %%%%
+% Must be loaded after zref-clever
+% Add the following to the preamble:
+%    \externaldocument[prefix]{path/to/axu.tex}.
+%    \zexternaldocument[prefix]{path/to/axu.tex}
+\RequirePackage{xr}          % for \ref and \eqref
+\RequirePackage{zref-xr}     % for \zcrefaux file}
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Bibliography
+%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{natbib}\setlength{\bibsep}{0.0pt}
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Multifiles
+%%%%%%%%%%%%%%%%%%%%%
+% cannot do RequirePackage
+\usepackage{standalone}   
+% \usepackage[subpreambles=true]{standalone}   % if subpreambles should be included in the main file
+\RequirePackage{import}
+
+%%%%%%%%%%%%%%%%%%%%%
+%% tikz
+%%%%%%%%%%%%%%%%%%%%% 
+\RequirePackage{tikz}
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Float
+%%%%%%%%%%%%%%%%%%%%% 
+\RequirePackage{caption}   % See https://tex.stackexchange.com/questions/58674/the-space-between-the-table-and-its-caption-is-very-small
+\RequirePackage{floatrow}
+\floatsetup{capposition=top}
+\DeclareNewFloatType{algo}{name=Algorithm,fileext=loe}
+\RequirePackage{booktabs}
+\RequirePackage{tabulary}
+\RequirePackage{tabularx}
+\RequirePackage{wrapfig}
+\RequirePackage{threeparttable}
+\RequirePackage{graphicx}
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Algorithms
+%%%%%%%%%%%%%%%%%%%%% 
+\RequirePackage{algorithm}
+\RequirePackage{algpseudocodex}
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Editting Features
+%%%%%%%%%%%%%%%%%%%%% 
+
+%%%% Todo command %%%%
+% Usage: "In Figure \TODO{}, I show that ..."
+%        "\TODO{This is a todo item.}"
+\RequirePackage{xspace}    % adds a space unless the macro is followed by certain punctuation
+\makeatletter
+\newcommand{\TODO}[1]{% 
+\ifthenelse{\equal{#1}{}}%  %if #1 is empty
+    {\textbf{\textcolor{red}{[TODO]}}\xspace}    % if #1 == blank
+    {\textbf{\textcolor{red}{[TODO: #1]}}\xspace}   % else (not blank)
+}
+\makeatother
+
+\RequirePackage{marginnote}    % note in margin
+
+% comment
+\RequirePackage{comment}   
+\excludecomment{hide}   % \being{hide} ... \end{hide} will not be printed
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Quote
+%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{epigraph}
+\RequirePackage{etoolbox}
+\RequirePackage{calc}
+\renewcommand{\epigraphsize}{\normalsize}
+
+% % normal epigraph
+% \setlength\epigraphwidth{8cm}
+% \setlength\epigraphrule{0pt}
+% \patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{}{}
+
+% short epigraph (auto width), does not work with long epigraph
+\newcommand{\mytextformat}{\itshape\epigraphsize}
+\setlength\epigraphrule{0pt}
+\newenvironment{mytext}{\mytextformat}{}
+\newenvironment{mysource}{\scshape\hfill}{}
+\renewcommand{\textflush}{mytext} 
+\renewcommand{\sourceflush}{mysource}
+\let\originalepigraph\epigraph 
+\renewcommand{\epigraph}[2]%
+   {\setlength{\epigraphwidth}{\widthof{\mytextformat#1}}\originalepigraph{#1}{#2}}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Misc
+%%%%%%%%%%%%%%%%%%%%% 
+\RequirePackage{lipsum}
+\RequirePackage{ifthen}
+\RequirePackage{xparse}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% Math %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Basics
+%%%%%%%%%%%%%%%%%%%%% 
+\RequirePackage{amsmath}
+\RequirePackage{amsthm} 
+\RequirePackage{thmtools}       % Better theorem environment management
+\RequirePackage{bracealign}     % Align braces
+\RequirePackage{leftindex}      % For using left subscript
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%% Math Macro
+%%%%%%%%%%%%%%%%%%%%% 
+
+%%%% Standard Macro %%%%
+% mathbb
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+
+% mathcal
+\newcommand{\EE}{\mathcal{E}}
+\newcommand{\NN}{\mathcal{N}}
+
+% math expression
+\newcommand{\prob}{\mathbb{P}}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+\newcommand{\argmax}{\mathop{\rm arg~max}\limits}
+
+% \Wtilde[<scale>]{<math>}
+% Example: $\Wtilde{\mathrm{X}}$
+% Example: $\Wtilde[1.5]{AB}$
+\newcommand{\Wtilde}[2][1]{%
+  \stackrel{\scalebox{#1}[1]{\sim}}{\smash{#2}\rule{0pt}{1.1ex}}%
+}
+
+% \setItemnumber{n} sets the item number of the current list to n.
+% This is useful for resuming the item number in a list.
+\newcommand\setItemnumber[1]{\setcounter{enumi}{\numexpr#1-1\relax}}
+
+% Use this in he proof environment.
+\newcommand{\step}[1]{\medskip\noindent{\small\textbf{#1}}\,}
+
+%%%% theorem macro %%%%
+% Main counter, sequential
+\declaretheorem[name=Theorem]{theorem} 
+
+% Environments that share the 'theorem' counter (e.g., Theorem 1, Criterion 2)
+\declaretheorem[name=Criterion, sibling=theorem]{criterion}
+
+% Independently numbered sequential environments (e.g., Lemma 1, Lemma 2)
+\declaretheorem[name=Assumption]{assumption}
+\declaretheorem[name=Axiom]{axiom}
+\declaretheorem[name=Case]{case}
+\declaretheorem[name=Claim]{claim}
+\declaretheorem[name=Conclusion]{conclusion}
+\declaretheorem[name=Condition]{condition}
+\declaretheorem[name=Conjecture]{conjecture}
+\declaretheorem[name=Corollary]{corollary} 
+\declaretheorem[name=Exercise]{exercise}
+\declaretheorem[name=Lemma]{lemma}
+\declaretheorem[name=Proposition]{proposition} 
+
+% Environments with 'definition' style (sequentially numbered)
+\declaretheorem[name=Definition, style=definition]{definition}
+\declaretheorem[name=Observation, style=definition]{observation}  
+\declaretheorem[name=Remark, style=definition]{remark}
+\declaretheorem[name=Example, style=definition]{example}
+
+% Reference names
+\zcRefTypeSetup{assumption}{
+  name-sg=assumption,
+  name-pl=assumptions,
+  Name-sg=Assumption,
+  Name-pl=Assumptions
+}
+
+% qed adjustment in Environments
+% ∎: Halmos's tombstone
+% I use this when I wan to mark the end of a paragraph in a non-proof environment (e.g., remark, example).
+% Type \halmos at the end of an environment or paragraph as an alternative to \qed.
+% \newcommand{\halmos}{\rule{0.3em}{0.5em}}
+\newcommand{\halmossymbol}{\rule{0.3em}{0.5em}}
+\newcommand{\halmos}{%
+   % Mimic the \qed command from amsthm package
+  \begingroup
+  \let\qedsymbol\halmossymbol
+  \qed
+  \endgroup
+}
+
+% For the example environment, automatically add the halmos symbol at the end of the environment.
+\AtEndEnvironment{example}{\halmos}
