@@ -160,7 +160,7 @@
 
 %%%% Hyper ref %%%%
 \RequirePackage[pdfencoding=auto,psdextra,pdfusetitle]{hyperref} 
-\RequirePackage{zref-clever}
+\RequirePackage{zref-clever}     % Load after hyperref
 \zcsetup{cap=true,nameinlink=false}
 \mathtoolsset{showonlyrefs=true,showmanualtags=true}    % Load after zref-clever
 \hypersetup{
@@ -180,6 +180,7 @@
 %    \externaldocument[prefix]{path/to/axu.tex}.
 %    \zexternaldocument[prefix]{path/to/axu.tex}
 \RequirePackage{xr}          % for \ref and \eqref
+\RequirePackage{xr-hyper}          % for \ref and \eqref
 \RequirePackage{zref-xr}     % for \zcrefaux file}
 
 %%%%%%%%%%%%%%%%%%%%%
