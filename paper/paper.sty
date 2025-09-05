@@ -383,6 +383,14 @@
   Name-pl=Assumptions
 }
 
+% fix subfiles hyperref issue 
+% https://tex.stackexchange.com/questions/742211/hyperref-points-to-the-wrong-chapter-when-using-subfiles
+\renewcommand*\theHlemma{\thelemma}
+\renewcommand*\theHdefinition{\thedefinition}
+\renewcommand*\theHtheorem{\thetheorem}
+\renewcommand*\theHproposition{\theproposition}
+
+
 % qed adjustment in Environments
 % ∎: Halmos's tombstone
 % I use this when I wan to mark the end of a paragraph in a non-proof environment (e.g., remark, example).
