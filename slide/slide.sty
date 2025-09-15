@@ -77,16 +77,17 @@
 % Usage: \setlistsep{10ex}{5ex}{5ex}
 % Note: `ex` refers to the height of the lowercase x in the current font (the "x-height").
 \makeatletter
-\newlength{\my@beamer@itemsepi}\setlength{\my@beamer@itemsepi}{3ex}
-\newlength{\my@beamer@itemsepii}\setlength{\my@beamer@itemsepii}{1.5ex}
-\newlength{\my@beamer@itemsepiii}\setlength{\my@beamer@itemsepiii}{1.5ex}
+\newlength{\my@beamer@itemsepi}\setlength{\my@beamer@itemsepi}{2.5ex}
+\newlength{\my@beamer@itemsepii}\setlength{\my@beamer@itemsepii}{1ex}
+\newlength{\my@beamer@itemsepiii}\setlength{\my@beamer@itemsepiii}{1ex}
+\newlength{\my@beamer@topsepii}\setlength{\my@beamer@topsepii}{0.7ex} % gap before level-2 list
 \newcommand{\my@beamer@setsep}{%
 \ifnum\@itemdepth=1\relax
      \setlength\itemsep{\my@beamer@itemsepi}% separation for first level
    \else
      \ifnum\@itemdepth=2\relax
        \setlength\itemsep{\my@beamer@itemsepii}% separation for second level
-       % \setlength\topsep{\my@beamer@itemsepi}% separation for second level
+       \setlength\topsep{\my@beamer@topsepii}
      \else
        \ifnum\@itemdepth=3\relax
          \setlength\itemsep{\my@beamer@itemsepiii}% separation for third level
