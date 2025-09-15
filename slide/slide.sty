@@ -39,6 +39,9 @@
 \newcommand{\darkgray}[1]{\textcolor{darkgray}{#1}}
 \newcommand{\green}[1]{\textcolor{olive}{#1}}
 
+% For citations
+\newcommand{\citeg}[1]{\textcolor{darkgray}{{\small #1}}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%  Modifying the Theme  %%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -74,7 +77,7 @@
 
 %%%%% itemize spacing setup
 % see https://tex.stackexchange.com/questions/632524/how-to-globally-set-itemize-item-spacing-in-beamer-without-breaking-overlay-spec
-% Usage: \setlistsep{10ex}{5ex}{5ex}
+% Usage (default values): \setlistsep{2.5ex}{1ex}{.3ex}
 % Note: `ex` refers to the height of the lowercase x in the current font (the "x-height").
 \makeatletter
 \newlength{\my@beamer@itemsepi}\setlength{\my@beamer@itemsepi}{2.5ex}
