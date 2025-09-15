@@ -66,7 +66,61 @@
 \setbeamercolor{itemize subsubitem}{fg=cyan!50}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%  Miscs  %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%  Sliode Style Setup  %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{xpatch}    % for patching commands
+
+%%%%%%%%% Bullet Points %%%%%%%%%%%%%%%%
+
+% itemize spacing setup
+% see https://tex.stackexchange.com/questions/632524/how-to-globally-set-itemize-item-spacing-in-beamer-without-breaking-overlay-spec
+% Usage: \setlistsep{10ex}{5ex}{5ex}
+\makeatletter
+\newlength{\my@beamer@itemsepi}\setlength{\my@beamer@itemsepi}{3ex}
+\newlength{\my@beamer@itemsepii}\setlength{\my@beamer@itemsepii}{1.5ex}
+\newlength{\my@beamer@itemsepiii}\setlength{\my@beamer@itemsepiii}{1.5ex}
+\newcommand{\my@beamer@setsep}{%
+\ifnum\@itemdepth=1\relax
+     \setlength\itemsep{\my@beamer@itemsepi}% separation for first level
+   \else
+     \ifnum\@itemdepth=2\relax
+       \setlength\itemsep{\my@beamer@itemsepii}% separation for second level
+       % \setlength\topsep{\my@beamer@itemsepi}% separation for second level
+     \else
+       \ifnum\@itemdepth=3\relax
+         \setlength\itemsep{\my@beamer@itemsepiii}% separation for third level
+         % \setlength\topsep{\my@beamer@itemsepii}% separation for second level
+   \fi\fi\fi}
+\xpatchcmd{\itemize}
+  {\def\makelabel}{\my@beamer@setsep\def\makelabel}{}{}
+\xpatchcmd{\beamer@enum@}
+  {\def\makelabel}{\my@beamer@setsep\def\makelabel}{}{}
+\newcommand\setlistsep[3]{%
+    \setlength{\my@beamer@itemsepi}{#1}%
+    \setlength{\my@beamer@itemsepii}{#2}%
+    \setlength{\my@beamer@itemsepiii}{#3}%
+}
+\makeatother
+
+% Transparent overlay
+\setbeamercovered{still covered={\opaqueness<1->{15}},again covered={\opaqueness<1->{60}}}
+\makeatletter
+\newcommand*\fix@beamer@close{%
+\ifnum\beamer@trivlistdepth>0
+    \beamer@closeitem
+\fi
+}
+\newcommand*\fix@beamer@open{%
+\ifnum\beamer@trivlistdepth>0
+    \gdef\beamer@closeitem{}%
+\fi
+}
+\BeforeBeginEnvironment{itemize}{\fix@beamer@close}
+\AfterEndEnvironment{itemize}{\fix@beamer@open}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%  Miscs  %%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{lipsum}
 
@@ -95,29 +149,12 @@
 % frame
 \RequirePackage{mdframed}
 
-% Transparent overlay
-\setbeamercovered{still covered={\opaqueness<1->{15}},again covered={\opaqueness<1->{60}}}
-\makeatletter
-\newcommand*\fix@beamer@close{%
-\ifnum\beamer@trivlistdepth>0
-    \beamer@closeitem
-\fi
-}
-\newcommand*\fix@beamer@open{%
-\ifnum\beamer@trivlistdepth>0
-    \gdef\beamer@closeitem{}%
-\fi
-}
-\BeforeBeginEnvironment{itemize}{\fix@beamer@close}
-\AfterEndEnvironment{itemize}{\fix@beamer@open}
-\makeatother
-
 % Hide parts
 \RequirePackage{comment}
 \excludecomment{hide}   % \being{hide} ... \end{hide} will not be printed
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%  Math  %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%  Math  %%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%% Basic Packages %%%%
