@@ -72,9 +72,10 @@
 
 %%%%%%%%% Bullet Points %%%%%%%%%%%%%%%%
 
-% itemize spacing setup
+%%%%% itemize spacing setup
 % see https://tex.stackexchange.com/questions/632524/how-to-globally-set-itemize-item-spacing-in-beamer-without-breaking-overlay-spec
 % Usage: \setlistsep{10ex}{5ex}{5ex}
+% Note: `ex` refers to the height of the lowercase x in the current font (the "x-height").
 \makeatletter
 \newlength{\my@beamer@itemsepi}\setlength{\my@beamer@itemsepi}{3ex}
 \newlength{\my@beamer@itemsepii}\setlength{\my@beamer@itemsepii}{1.5ex}
@@ -161,7 +162,6 @@
 \mathtoolsset{showonlyrefs=true}    % show equation number only if it is referenced
 \RequirePackage{amsthm} 
 \RequirePackage{bm}   % optional
-
 
 % Macros
 \newcommand{\E}{\mathbb{E}}
