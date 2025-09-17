@@ -1,7 +1,26 @@
 %%% Beamer slide template
+% slide.sty
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{slide}[2025/09/17 Beamer slide template]
 
-% theme
-\usetheme[progressbar=frametitle, numbering=fraction]{metropolis} % Use metropolis theme
+% Allow options like numbering=fraction, progressbar=frametitle, etc.
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{family=slide,prefix=slide@}
+
+% Declare options with defaults
+\DeclareStringOption[fraction]{numbering}          % default: fraction
+\DeclareStringOption[frametitle]{progressbar}  % default: frametitle
+
+\ProcessKeyvalOptions*
+
+% Load metropolis with defaults or user-specified overrides
+\usetheme[
+  progressbar=\slide@progressbar,
+  numbering=\slide@numbering
+]{metropolis}
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%  Styles  %%%%%%%%%%%%%%%%%%%%
@@ -67,6 +86,8 @@
 \setbeamercolor{itemize item}{fg=cyan!50}
 \setbeamercolor{itemize subitem}{fg=cyan!50}
 \setbeamercolor{itemize subsubitem}{fg=cyan!50}
+
+\setbeamerfont{itemize item}{size=\footnotesize}   % Make square smaller
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%  Sliode Style Setup  %%%%%%%%%%
