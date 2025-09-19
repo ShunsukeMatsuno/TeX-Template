@@ -3,7 +3,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % font
-\setsansfont{Libertinus Sans}[Scale=1.1]
+\RequirePackage{fontspec}
+\setmainfont{Libertinus Sans}[Scale=1.1]
 
 % doc
 \RequirePackage[onehalfspacing]{setspace}   % ! `onehalfspacing` or 'doublespacing'
@@ -25,7 +26,6 @@ marginparwidth=3cm, marginparsep=5mm}
 \RequirePackage{marginnote}    % note in margin
 \reversemarginpar
 \newcommand{\slidenote}[1]{\marginnote{\blue{\slide} \\ \textcolor{gray}{#1}}[.32cm]}
-
 
 % color
 \RequirePackage{xcolor}
