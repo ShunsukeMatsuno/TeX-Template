@@ -132,12 +132,15 @@
 \xpretocmd{\footnote}{\unskip}{}{}
 
 %%%% Appendix %%%%
+\RequirePackage{chngcntr}   % for \counterwithin
 \RequirePackage{apptools}
 \AtAppendix{\counterwithin{lemma}{section}}
 \AtAppendix{\counterwithin{corollary}{section}}
 \AtAppendix{\counterwithin{remark}{section}}
 \AtAppendix{\counterwithin{theorem}{section}}
 \AtAppendix{\counterwithin{proposition}{section}}
+\AtAppendix{\counterwithin{definition}{section}}
+\AtAppendix{\counterwithin{algorithm}{section}}
 
 \RequirePackage{appendix}    % for \appendixpage and \addappheadtotoc commands
 
