@@ -89,6 +89,19 @@
 \predate{\begin{center}\large}
 \postdate{\par\end{center}\vskip 1.5em}
 
+% \thanks command without symbol next to the author name
+% Usage: 
+%\author{Shunsuke%
+%  \thanks{First block.}%
+%  \thanksnosymbol{Second block.}%
+%}
+\makeatletter
+\newcommand{\thanksnosymbol}[1]{%
+  % Append a \footnotetext with the *current* footnote number to \@thanks
+  \protected@xdef\@thanks{\@thanks\protect\footnotetext[\the\c@footnote]{#1}}%
+}
+\makeatother
+
 %%%% Table of contents %%%%
 % May interact with tagging. Hyperlink disappears with tagging.
 %\RequirePackage{titletoc,tocloft}
