@@ -3,6 +3,9 @@
 # Determine the TeX Live local installation directory
 TEXMFHOME=$(kpsewhich -var-value=TEXMFLOCAL)
 
+# Remove trailing slashes from TEXMFHOME
+TEXMFHOME=$(echo "$TEXMFHOME" | sed 's:/*$::')
+
 # Define target paths for style files, BibTeX style files, and images
 path_sty=$TEXMFHOME/tex/latex/local
 path_bst=$TEXMFHOME/bibtex/bst/local
