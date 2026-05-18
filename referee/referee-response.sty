@@ -12,10 +12,6 @@
 \input{referee-response-base.sty}
 
 \RequirePackage{tcolorbox}
-\definecolor{jet}{HTML}{131516}
-\newcommand\jet[1]{{\color{jet}#1}}
-\DeclareCaptionFont{jet}{\color{jet}}
-
 
 %%%%%%%%%%%%%%%%%%%%% main part %%%%%%%%%%%%%%%%%%%%%%%
 
@@ -23,7 +19,8 @@
 \newtcolorbox{commentbox}{
   blanker, breakable, left=1em,
   top = 0.5em, bottom = 0.5em,
-  borderline west={2pt}{0pt}{jet}
+  % borderline west={2pt}{0pt}{jet}
+  borderline west={2pt}{0pt}{lightgray}
 }
 
 \newcommand{\RefName}{}
@@ -33,7 +30,7 @@
 \newenvironment{refcomment}{
   \subsection{\RefAbbr \ Comment \thecommentcount}
   \addtocounter{commentcount}{1}
-  \begin{commentbox}\color{jet}
+  \begin{commentbox}\color{darkgray}
 }{
   \end{commentbox}
 }
