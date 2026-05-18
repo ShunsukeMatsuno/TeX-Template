@@ -65,6 +65,10 @@ Response.
 
 Response
 
+\begin{refcomment*}
+  Comment 
+\end{refcomment*}
+
 % ------------------------------------------------------------------------------
 \vspace*{\bigskipamount}\NewRef{Referee 2}{R2}
 % ------------------------------------------------------------------------------
@@ -93,9 +97,9 @@ Response
 \section*{How to use this template}
 % ------------------------------------------------------------------------------
 
-There are two main commands provided by the document. First, for each referee, a  \texttt{\textbackslash section} is created using the \texttt{\textbackslash NewRef\{Name\}\{Abbreviation\}} command. The \texttt{Name} is what will be displayed by the section and \texttt{Abbreviation} is what will label each comment.
+Use \texttt{\textbackslash NewRef\{Name\}\{Abbreviation\}} to start each editor or referee section. The \texttt{Name} appears in the section heading, and the \texttt{Abbreviation} labels numbered comments.
 
-Within each section, each referee comment will be written using \texttt{\textbackslash begin\{refcomment\} ... \textbackslash end\{refcomment\}}. This command automatically numbers the comments and labels it using the \texttt{Abbreviation} from the \texttt{NewRef} declaration. Responses to the comment should go below the \texttt{refcomment} block.
+Write comments with \texttt{\textbackslash begin\{refcomment\} ... \textbackslash end\{refcomment\}}. Comments are numbered automatically; use an optional argument, such as \texttt{\textbackslash begin\{refcomment\}[Comment 1a]}, to set a manual label. Use \texttt{refcomment*} for an unnumbered comment box. Responses should follow the comment block.
 
 
 \end{document}
