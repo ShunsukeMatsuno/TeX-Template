@@ -27,8 +27,8 @@
 \newcommand{\RefAbbr}{}
 \newcounter{commentcount}
 \setcounter{commentcount}{1}
-\newenvironment{refcomment}{
-  \subsection{\RefAbbr \ Comment \thecommentcount}
+\newenvironment{refcomment}[1][Comment \thecommentcount]{
+  \subsection{\RefAbbr \ #1}
   \addtocounter{commentcount}{1}
   \begin{commentbox}\color{darkgray}
 }{
