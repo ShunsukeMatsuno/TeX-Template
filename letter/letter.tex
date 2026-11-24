@@ -23,6 +23,7 @@
 \setlength{\parskip}{1em} % Vertical space between paragraphs
 
 \usepackage{graphicx} % Required for including images
+\usepackage{transparent} % Opacity for the letterhead logo
 
 \usepackage{fancyhdr} % Required for customizing headers and footers
 
@@ -36,7 +37,7 @@
 %	FIRST PAGE HEADER
 %----------------------------------------------------------------------------------------
 
-\includegraphics[width=0.55\linewidth]{booth-hp-gm-rgb.png} % Logo
+{\transparent{0.8}\includegraphics[width=0.40\linewidth]{booth-hp-gm-rgb.png}} % Logo
 
 \vspace{-1em} % Pull the rule closer to the logo
 
@@ -53,9 +54,10 @@
 	\today \bigskip\\ % Date
 	Shunsuke Matsuno \\
 	The University of Chicago Booth School of Business\\
-	5807 S. Woodlawn Ave., Chicago, IL 60637 \\ % Address
+	5807 S. Woodlawn Ave. \\ % Street address
+	Chicago, IL 60637 \\
 	% Phone: (000) 111-1111 \\
-	Email: \texttt{Shunsuke.Matsuno@chicagobooth.edu}
+	Email: Shunsuke.Matsuno@chicagobooth.edu
 \end{tabular}
 
 \bigskip % Vertical whitespace
@@ -65,14 +67,13 @@
 %----------------------------------------------------------------------------------------
 
 \begin{tabular}{@{} l}
+	The Editors \\
 	\textit{Journal of Accounting and Economics}\\
-	 Editors \\
 \end{tabular}
 
 \bigskip % Vertical whitespace
 
 Dear Editors,
-\bigskip % Vertical whitespace
 
 %----------------------------------------------------------------------------------------
 %	LETTER CONTENT
@@ -86,10 +87,10 @@ Thank you for your time and consideration.
 
 Sincerely yours,
 
-\vspace{50pt} % Vertical whitespace
+\vspace{10pt} % Space before the signature
 
 \includegraphics[scale=.3]{Signature.png}
-
+\vspace{-10pt}
 
 Shunsuke Matsuno
 
